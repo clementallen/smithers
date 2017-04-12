@@ -1,5 +1,3 @@
-function smithers() {
-    return 'OK';
-}
+import Smithers from './Smithers';
 
-export default smithers;
+export default Smithers;

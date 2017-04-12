@@ -1,11 +1,11 @@
-# smithers
+# Smithers
 Promise-based Node Jenkins API
 
-[![Build Status](https://travis-ci.org/clementallen/smithers.svg?branch=master)](https://travis-ci.org/clementallen/smithers)
-[![Coverage Status](https://coveralls.io/repos/github/clementallen/smithers/badge.svg?branch=master)](https://coveralls.io/github/clementallen/smithers?branch=master)
-[![Code Climate](https://codeclimate.com/github/clementallen/smithers/badges/gpa.svg)](https://codeclimate.com/github/clementallen/smithers)
-[![dependencies Status](https://david-dm.org/clementallen/smithers/status.svg)](https://david-dm.org/clementallen/smithers)
-[![devDependencies Status](https://david-dm.org/clementallen/smithers/dev-status.svg)](https://david-dm.org/clementallen/smithers?type=dev)
+[![Build Status](https://img.shields.io/travis/clementallen/smithers.svg?style=flat-square)](https://travis-ci.org/clementallen/smithers)
+[![Coverage Status](https://img.shields.io/coveralls/clementallen/smithers.svg?style=flat-square)](https://coveralls.io/github/clementallen/smithers?branch=master)
+[![Code Climate](https://img.shields.io/codeclimate/github/clementallen/smithers.svg?style=flat-square)](https://codeclimate.com/github/clementallen/smithers)
+[![dependencies Status](https://img.shields.io/david/clementallen/smithers.svg?style=flat-square)](https://david-dm.org/clementallen/smithers)
+[![devDependencies Status](https://img.shields.io/david/dev/clementallen/smithers.svg?style=flat-square)](https://david-dm.org/clementallen/smithers?type=dev)
 
 ### Install
 
