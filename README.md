@@ -7,14 +7,40 @@ Promise-based Node Jenkins API
 [![dependencies Status](https://img.shields.io/david/clementallen/smithers.svg?style=flat-square)](https://david-dm.org/clementallen/smithers)
 [![devDependencies Status](https://img.shields.io/david/dev/clementallen/smithers.svg?style=flat-square)](https://david-dm.org/clementallen/smithers?type=dev)
 
-### Install
+## Install
 
-##### Yarn
+### Yarn
 ```
 yarn add smithers
 ```
 
-##### NPM
+### NPM
 ```
 npm install --save smithers
+```
+
+## Usage
+
+### Setup
+``` javascript
+import Smithers from 'smithers';
+
+// Basic setup - no authentication
+const smithers = new Smithers('http://jenkinsurl.com');
+
+// Username & password auth
+const smithers = new Smithers('http://username:password@jenkinsurl.com');
+
+// Username & token auth
+const smithers = new Smithers('http://username:token@jenkinsurl.com');
+```
+
+### `smithers.info()`
+The info method retrieves all data from the jenkins `/api/json` endpoint.
+```javascript
+smithers.info().then((response) => {
+    console.log(response);
+}).catch((error) => {
+    console.log(error);
+});
 ```
