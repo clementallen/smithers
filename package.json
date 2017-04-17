@@ -1,11 +1,11 @@
 {
   "name": "smithers",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Promise-based Node Jenkins API",
   "main": "./lib/index.js",
   "scripts": {
     "build": "babel -d lib src",
-    "test": "mocha --compilers js:babel-core/register --require ./test/base",
+    "test": "mocha ./test/*.test.js ./test/**/*.test.js --compilers js:babel-core/register --require ./test/base",
     "cover": "istanbul cover _mocha -- ./test/*.test.js ./test/**/*.test.js --compilers js:babel-register --require ./test/base",
     "publish-please": "publish-please",
     "prepublish": "publish-please guard"
