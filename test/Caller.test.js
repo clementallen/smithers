@@ -17,11 +17,14 @@ describe('Caller', () => {
             return expect(caller.receive('/test/path')).to.eventually.eql(mockResponse);
         });
 
-        it('should resolve if response errors', () => {
-            const mockError = new Error('Unavailable');
+        it('should reject if response errors', () => {
+            const mockError = {
+                name: 'Error',
+                statusCode: 500
+            }
             requestStub.rejects(mockError);
 
-            return expect(caller.receive('/test/path')).to.be.rejectedWith(mockError);
+            return expect(caller.receive('/test/path')).to.be.rejectedWith('Error | 500');
         });
     });
 });

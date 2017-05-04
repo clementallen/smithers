@@ -1,5 +1,6 @@
 import request from 'request-promise';
 import buildUrl from './utils/buildUrl';
+import formatError from './utils/formatError';
 
 export default class Caller {
     constructor(url) {
@@ -13,8 +14,9 @@ export default class Caller {
                 .then(JSON.parse)
                 .then((response) => {
                     resolve(response);
-                }).catch((error) => {
-                    reject(error);
+                })
+                .catch((error) => {
+                    reject(formatError(error));
                 })
         });
     }
