@@ -6,7 +6,7 @@
   "scripts": {
     "build": "babel -d lib src",
     "test": "mocha ./test/*.test.js ./test/**/*.test.js --compilers js:babel-core/register --require ./test/base",
-    "cover": "istanbul cover _mocha -- ./test/*.test.js ./test/**/*.test.js --compilers js:babel-register --require ./test/base",
+    "cover": "istanbul cover ./node_modules/mocha/bin/_mocha -- ./test/*.test.js ./test/**/*.test.js --compilers js:babel-register --require ./test/base",
     "publish-please": "publish-please",
     "prepublish": "publish-please guard"
   },

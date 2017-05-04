@@ -1,5 +1,6 @@
 const paths = {
-    info: '/api/json'
+    info: '/api/json',
+    jobInfo: '/job/{name}/api/json'
 };
 
 export default paths;

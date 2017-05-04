@@ -1,3 +1,4 @@
+import createPath from './utils/createPath';
 import paths from './utils/paths';
 import Caller from './Caller';
 
@@ -16,5 +17,16 @@ export default class Smithers {
                 reject(error);
             });
         });
+    }
+
+    jobInfo(name) {
+        return new Promise((resolve, reject) => {
+            const requestUrl = createPath(paths.jobInfo, { name });
+            this.Caller.receive(requestUrl).then((response) => {
+                resolve(response);
+            }).catch((error) => {
+                reject(error);
+            })
+        })
     }
 }

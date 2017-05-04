@@ -36,9 +36,19 @@ const smithers = new Smithers('http://username:token@jenkinsurl.com');
 ```
 
 ### `smithers.info()`
-The info method retrieves all data from the jenkins `/api/json` endpoint.
+The info method retrieves all data from the `/api/json` endpoint.
 ```javascript
 smithers.info().then((response) => {
+    console.log(response);
+}).catch((error) => {
+    console.log(error);
+});
+```
+
+### `smithers.jobInfo(name)`
+The jobInfo method retrieves all data from a specific job
+```javascript
+smithers.jobInfo(name).then((response) => {
     console.log(response);
 }).catch((error) => {
     console.log(error);
