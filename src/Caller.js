@@ -1,4 +1,4 @@
-import request from 'request-promise';
+import axios from 'axios';
 import buildUrl from './utils/buildUrl';
 import formatError from './utils/formatError';
 
@@ -10,10 +10,9 @@ export default class Caller {
     receive(path) {
         return new Promise((resolve, reject) => {
             const url = buildUrl(this.url, path);
-            request(url)
-                .then(JSON.parse)
+            axios.get(url)
                 .then((response) => {
-                    resolve(response);
+                    resolve(response.data);
                 })
                 .catch((error) => {
                     reject(formatError(error));
