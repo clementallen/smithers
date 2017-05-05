@@ -1,13 +1,15 @@
 import formatError from '../../src/utils/formatError';
 
 describe('formatError', () => {
-    it('should return the expected error string', () => {
+    it('should return the expected error string if response exists', () => {
         const mockError = {
-            name: 'StatusCodeError',
-            statusCode: 500
+            response: {
+                status: 500,
+                statusText: 'StatusCodeError'
+            }
         }
 
-        const expected = 'StatusCodeError | 500';
+        const expected = '500 | StatusCodeError';
 
         const actual = formatError(mockError);
 
