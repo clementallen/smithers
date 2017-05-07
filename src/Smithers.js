@@ -6,7 +6,7 @@ export default class Smithers {
     constructor(url, config = {}) {
         this.url = url;
         this.config = config;
-        this.Caller = new Caller(this.url);
+        this.Caller = new Caller(this.url, this.config);
     }
 
     info() {
