@@ -8,18 +8,19 @@ export default class Caller {
         this.axiosConfig = {
             timeout: this.config.timeout || 5000,
             baseURL: this.url
-        }
+        };
     }
 
-    receive(path) {
+    get(path, config = this.axiosConfig) {
         return new Promise((resolve, reject) => {
-            axios.get(path, this.axiosConfig)
+            config.baseURL = this.url;
+            axios.get(path, config)
                 .then((response) => {
                     resolve(response.data);
                 })
                 .catch((error) => {
                     reject(formatError(error));
-                })
+                });
         });
     }
 }
