@@ -13,8 +13,9 @@ export default class Caller {
 
     get(path, config = this.axiosConfig) {
         return new Promise((resolve, reject) => {
-            config.baseURL = this.url;
-            axios.get(path, config)
+            const requestConfig = config;
+            requestConfig.baseURL = this.url;
+            axios.get(path, requestConfig)
                 .then((response) => {
                     resolve(response.data);
                 })

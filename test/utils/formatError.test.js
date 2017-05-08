@@ -7,7 +7,7 @@ describe('formatError', () => {
                 status: 500,
                 statusText: 'StatusCodeError'
             }
-        }
+        };
 
         const expected = '500 | StatusCodeError';
 

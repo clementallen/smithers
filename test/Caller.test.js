@@ -9,7 +9,7 @@ describe('Caller', () => {
     };
 
     const Caller = proxyquire('../src/Caller', {
-        'axios': {
+        axios: {
             get: axiosStub
         }
     });
@@ -23,7 +23,7 @@ describe('Caller', () => {
         });
 
         it('should reject if response errors', () => {
-            const mockError = new Error('Unavailable')
+            const mockError = new Error('Unavailable');
             axiosStub.rejects(mockError);
 
             return expect(caller.get('/test/path')).to.be.rejectedWith('Unavailable');
@@ -35,7 +35,7 @@ describe('Caller', () => {
             };
             const callerWithConfig = new Caller('http://example.com', mockConfig);
             axiosStub.resolves(mockResponse);
-            callerWithConfig.get('/test/path').then((response) => {
+            callerWithConfig.get('/test/path').then(() => {
                 expect(axiosStub).to.be.calledWith('/test/path', {
                     baseURL: 'http://example.com',
                     timeout: 1000

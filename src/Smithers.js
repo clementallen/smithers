@@ -26,7 +26,7 @@ export default class Smithers {
                 resolve(response);
             }).catch((error) => {
                 reject(error);
-            })
-        })
+            });
+        });
     }
 }

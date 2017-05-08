@@ -1,7 +1,9 @@
 export default (template, values = {}) => {
-    for (var key in values) {
-        if (!values.hasOwnProperty(key)) continue;
-        template = template.replace(`{${key}}`, values[key]);
+    let newTemplate = template;
+    for (const key in values) {
+        if (values.hasOwnProperty(key)) {
+            newTemplate = newTemplate.replace(`{${key}}`, values[key]);
+        }
     }
-    return template;
-}
+    return newTemplate;
+};
