@@ -5,17 +5,22 @@
         "node": true,
         "mocha": true
     },
+    "plugins": [
+        "chai-friendly"
+    ],
     "globals": {
         "expect": true,
         "sinon": true
     },
     "rules": {
         "indent": [
-            "error", 4
+            2, 4
         ],
         "comma-dangle": [
-            "error",
+            2,
             "never"
-        ]
+        ],
+        "no-unused-expressions": 0,
+        "chai-friendly/no-unused-expressions": 2
     }
 }
