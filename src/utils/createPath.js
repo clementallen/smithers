@@ -1,7 +1,11 @@
 export default (template, values = {}) => {
-    for (var key in values) {
-        if (!values.hasOwnProperty(key)) continue;
-        template = template.replace(`{${key}}`, values[key]);
-    }
-    return template;
-}
+    let path = template;
+
+    Object.keys(values).forEach((key) => {
+        if (Object.prototype.hasOwnProperty.call(values, key)) {
+            path = path.replace(`{${key}}`, values[key]);
+        }
+    });
+
+    return path;
+};

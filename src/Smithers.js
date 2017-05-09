@@ -6,12 +6,12 @@ export default class Smithers {
     constructor(url, config = {}) {
         this.url = url;
         this.config = config;
-        this.Caller = new Caller(this.url);
+        this.Caller = new Caller(this.url, this.config);
     }
 
-    info() {
+    info(config) {
         return new Promise((resolve, reject) => {
-            this.Caller.receive(paths.info).then((response) => {
+            this.Caller.get(paths.info, config).then((response) => {
                 resolve(response);
             }).catch((error) => {
                 reject(error);
@@ -19,14 +19,14 @@ export default class Smithers {
         });
     }
 
-    jobInfo(name) {
+    jobInfo(name, config) {
         return new Promise((resolve, reject) => {
             const requestUrl = createPath(paths.jobInfo, { name });
-            this.Caller.receive(requestUrl).then((response) => {
+            this.Caller.get(requestUrl, config).then((response) => {
                 resolve(response);
             }).catch((error) => {
                 reject(error);
-            })
-        })
+            });
+        });
     }
 }

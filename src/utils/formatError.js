@@ -1,8 +1,11 @@
 export default (error) => {
+    let formattedError;
     if (error.response) {
         const { statusText, status } = error.response;
-        return `${status} | ${statusText}`;
+        formattedError = `${status} | ${statusText}`;
     } else {
-        return error.message;
+        formattedError = error.message;
     }
-}
+
+    return formattedError;
+};

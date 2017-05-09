@@ -1,22 +1,27 @@
 import axios from 'axios';
-import buildUrl from './utils/buildUrl';
 import formatError from './utils/formatError';
 
 export default class Caller {
-    constructor(url) {
+    constructor(url, config = {}) {
         this.url = url;
+        this.config = config;
+        this.axiosConfig = {
+            timeout: this.config.timeout || 5000,
+            baseURL: this.url
+        };
     }
 
-    receive(path) {
+    get(path, config = this.axiosConfig) {
         return new Promise((resolve, reject) => {
-            const url = buildUrl(this.url, path);
-            axios.get(url)
+            const requestConfig = config;
+            requestConfig.baseURL = this.url;
+            axios.get(path, requestConfig)
                 .then((response) => {
                     resolve(response.data);
                 })
                 .catch((error) => {
                     reject(formatError(error));
-                })
+                });
         });
     }
 }
