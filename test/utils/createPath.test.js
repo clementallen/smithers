@@ -12,7 +12,8 @@ describe('createPath', () => {
         const mockTemplate = '/path/{type}/with/extra/{param}/in';
         const values = {
             type: 'info',
-            param: 'value'
+            param: 'value',
+            empty: 'does-not-exist'
         };
         const result = createPath(mockTemplate, values);
 
