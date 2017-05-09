@@ -15,4 +15,13 @@ describe('formatError', () => {
 
         expect(actual).to.equal(expected);
     });
+
+    it('should return the error object message if response does not exist', () => {
+        const mockMessage = 'Unavailable';
+        const mockError = new Error(mockMessage);
+
+        const actual = formatError(mockError);
+
+        expect(actual).to.equal(mockMessage);
+    });
 });

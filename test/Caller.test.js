@@ -2,6 +2,8 @@ import proxyquire from 'proxyquire';
 
 describe('Caller', () => {
     const axiosStub = sinon.stub();
+    const mockPath = '/test/path';
+    const mockUrl = 'http://example.com';
     const mockResponse = {
         data: {
             mockProp: 'mockVal'
@@ -13,34 +15,44 @@ describe('Caller', () => {
             get: axiosStub
         }
     });
-    const caller = new Caller('http://example.com');
+    const caller = new Caller(mockUrl);
 
     describe('get', () => {
         it('should resolve with the correct data', () => {
             axiosStub.resolves(mockResponse);
 
-            return expect(caller.get('/test/path')).to.eventually.eql(mockResponse.data);
+            return expect(caller.get(mockPath)).to.eventually.eql(mockResponse.data);
         });
 
         it('should reject if response errors', () => {
             const mockError = new Error('Unavailable');
             axiosStub.rejects(mockError);
 
-            return expect(caller.get('/test/path')).to.be.rejectedWith('Unavailable');
+            return expect(caller.get(mockPath)).to.be.rejectedWith('Unavailable');
         });
 
-        it('should call axios with the expected arguments', (done) => {
+        it('should call axios with the instance config if no separate config provided', (done) => {
+            axiosStub.resolves(mockResponse);
+            caller.get(mockPath).then(() => {
+                expect(axiosStub).to.be.calledWithExactly(mockPath, {
+                    timeout: 5000,
+                    baseURL: mockUrl
+                });
+                done();
+            });
+        });
+
+        it('should call axios with the individual config if provided', (done) => {
             const mockConfig = {
                 timeout: 1000
             };
-            const callerWithConfig = new Caller('http://example.com', mockConfig);
             axiosStub.resolves(mockResponse);
-            callerWithConfig.get('/test/path').then(() => {
-                expect(axiosStub).to.be.calledWith('/test/path', {
-                    baseURL: 'http://example.com',
+            caller.get(mockPath, mockConfig).then(() => {
+                expect(axiosStub).to.be.calledWithExactly(mockPath, {
+                    baseURL: mockUrl,
                     timeout: 1000
                 });
-                return done();
+                done();
             });
         });
     });
