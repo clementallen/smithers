@@ -25,17 +25,23 @@ npm install --save smithers
 ``` javascript
 import Smithers from 'smithers';
 
-// Basic setup - no authentication
-const smithers = new Smithers('http://jenkinsurl.com');
+// Basic setup - no authentication (config optional)
+const smithers = new Smithers('http://jenkinsurl.com', config);
 
-// Username & password auth
-const smithers = new Smithers('http://username:password@jenkinsurl.com');
+// Username & password auth (config optional)
+const smithers = new Smithers('http://username:password@jenkinsurl.com', config);
 
-// Username & token auth
-const smithers = new Smithers('http://username:token@jenkinsurl.com');
+// Username & token auth (config optional)
+const smithers = new Smithers('http://username:token@jenkinsurl.com', config);
 ```
 
-### `smithers.info()`
+### Configuration
+Configuration can be either passed when Smithers is instantiated or when a method is called.  The configuration is forwaded to the `axios` calls so look at the [axios documentation](https://github.com/mzabriskie/axios#request-config) to see the different options.
+
+
+### Methods
+
+#### `smithers.info([config])`
 The info method retrieves all data from the `/api/json` endpoint.
 ```javascript
 smithers.info().then((response) => {
@@ -45,7 +51,7 @@ smithers.info().then((response) => {
 });
 ```
 
-### `smithers.jobInfo(name)`
+#### `smithers.jobInfo(name, [config])`
 The jobInfo method retrieves all data from a specific job
 ```javascript
 smithers.jobInfo(name).then((response) => {
