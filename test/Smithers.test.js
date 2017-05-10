@@ -3,17 +3,16 @@ import Caller from '../src/Caller';
 
 describe('Smithers', () => {
     let sandbox;
-    const mockError = 'Unavailable';
+    const mockError = 'Smithers Unavailable';
     const mockResponse = {
-        mockProp: 'mockVal'
+        smithersProp: 'smithersVal'
     };
     const callerGetStub = sinon.stub();
-
     const smithers = new Smithers('http://example.com');
 
-    before(() => {
+    beforeEach(() => {
         sandbox = sinon.sandbox.create();
-        sandbox.stub(Caller.prototype, 'get', callerGetStub);
+        sandbox.stub(Caller.prototype, 'get').callsFake(callerGetStub);
     });
 
     afterEach(() => {
@@ -27,9 +26,9 @@ describe('Smithers', () => {
             return expect(smithers.info()).to.eventually.eql(mockResponse);
         });
 
-        xit('should reject with Caller error', () => {
+        it('should reject with Caller error', () => {
             callerGetStub.rejects(mockError);
-            return expect(smithers.info()).to.be.rejectedWith(mockError);
+            return expect(smithers.info()).to.be.rejectedWith(mockError.message);
         });
     });
 
@@ -39,9 +38,9 @@ describe('Smithers', () => {
             return expect(smithers.jobInfo('jobName')).to.eventually.eql(mockResponse);
         });
 
-        xit('should reject with Caller error', () => {
+        it('should reject with Caller error', () => {
             callerGetStub.rejects(mockError);
-            return expect(smithers.info()).to.be.rejectedWith(mockError);
+            return expect(smithers.jobInfo('jobName')).to.be.rejectedWith(mockError.message);
         });
     });
 });

@@ -6,7 +6,7 @@ describe('Caller', () => {
     const mockUrl = 'http://example.com';
     const mockResponse = {
         data: {
-            mockProp: 'mockVal'
+            callerProp: 'callerVal'
         }
     };
 
@@ -25,10 +25,10 @@ describe('Caller', () => {
         });
 
         it('should reject if response errors', () => {
-            const mockError = new Error('Unavailable');
+            const mockError = new Error('Caller Unavailable');
             axiosStub.rejects(mockError);
 
-            return expect(caller.get(mockPath)).to.be.rejectedWith('Unavailable');
+            return expect(caller.get(mockPath)).to.be.rejectedWith('Caller Unavailable');
         });
 
         it('should call axios with the instance config if no separate config provided', (done) => {
