@@ -35,13 +35,13 @@ const smithers = new Smithers('http://username:password@jenkinsurl.com', config)
 const smithers = new Smithers('http://username:token@jenkinsurl.com', config);
 ```
 
-## Configuration
+### Configuration
 Configuration can be either passed when Smithers is instantiated or when a method is called.  The configuration is forwaded to the `axios` calls so look at the [axios documentation](https://github.com/mzabriskie/axios#request-config) to see the different options.
 
 
-## Methods
+### Methods
 
-### `smithers.info([config])`
+#### `smithers.info([config])`
 The info method retrieves all data from the `/api/json` endpoint.
 ```javascript
 smithers.info().then((response) => {
@@ -51,7 +51,7 @@ smithers.info().then((response) => {
 });
 ```
 
-### `smithers.jobInfo(name, [config])`
+#### `smithers.jobInfo(name, [config])`
 The jobInfo method retrieves all data from a specific job
 ```javascript
 smithers.jobInfo(name).then((response) => {
