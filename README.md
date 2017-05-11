@@ -60,3 +60,13 @@ smithers.jobInfo(name).then((response) => {
     console.log(error);
 });
 ```
+
+#### `smithers.latestBuildInfo(name, [config])`
+The latestBuildInfo method retrieves all data from the latest build of a specifc job
+```javascript
+smithers.latestBuildInfo(name).then((response) => {
+    console.log(response);
+}).catch((error) => {
+    console.log(error);
+});
+```

@@ -63,4 +63,24 @@ describe('Smithers', () => {
             });
         });
     });
+
+    describe('latestBuildInfo', () => {
+        it('should resolve with Caller response', () => {
+            callerGetStub.resolves(mockResponse);
+            return expect(smithers.latestBuildInfo('jobName')).to.eventually.eql(mockResponse);
+        });
+
+        it('should reject with Caller error', () => {
+            callerGetStub.rejects(mockError);
+            return expect(smithers.latestBuildInfo('jobName')).to.be.rejectedWith(mockError.message);
+        });
+
+        it('should call Caller.get with the expected parameters', (done) => {
+            callerGetStub.resolves(mockResponse);
+            smithers.latestBuildInfo('jobName', mockConfig).then(() => {
+                expect(callerGetStub).to.be.calledWithExactly('/job/jobName/lastBuild/api/json', mockConfig);
+                done();
+            });
+        });
+    });
 });
