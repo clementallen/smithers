@@ -29,4 +29,15 @@ export default class Smithers {
             });
         });
     }
+
+    latestBuildInfo(name, config) {
+        return new Promise((resolve, reject) => {
+            const requestUrl = createPath(paths.latestBuildInfo, { name });
+            this.Caller.get(requestUrl, config).then((response) => {
+                resolve(response);
+            }).catch((error) => {
+                reject(error);
+            });
+        });
+    }
 }
