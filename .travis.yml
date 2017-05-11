@@ -5,12 +5,11 @@ node_js:
     - 7
     - 6
     - 5
-    - 4
 
 install:
-    - npm install
+    - yarn
 
 script:
-    - npm run cover
+    - yarn cover
 
 after_script: "cat coverage/lcov.info | node_modules/coveralls/bin/coveralls.js"
