@@ -2,11 +2,14 @@ language: node_js
 
 node_js:
     - stable
+    - 7
+    - 6
+    - 5
 
 install:
-    - npm install
+    - yarn
 
 script:
-    - npm run cover
+    - yarn cover
 
 after_script: "cat coverage/lcov.info | node_modules/coveralls/bin/coveralls.js"
