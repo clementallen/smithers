@@ -36,7 +36,8 @@ describe('Caller', () => {
             caller.get(mockPath).then(() => {
                 expect(axiosStub).to.be.calledWithExactly(mockPath, {
                     timeout: 5000,
-                    baseURL: mockUrl
+                    baseURL: mockUrl,
+                    withCredentials: true
                 });
                 done();
             });
@@ -50,7 +51,8 @@ describe('Caller', () => {
             caller.get(mockPath, mockConfig).then(() => {
                 expect(axiosStub).to.be.calledWithExactly(mockPath, {
                     baseURL: mockUrl,
-                    timeout: 1000
+                    timeout: 1000,
+                    withCredentials: true
                 });
                 done();
             });
