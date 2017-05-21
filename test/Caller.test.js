@@ -37,7 +37,7 @@ describe('Caller', () => {
                 expect(axiosStub).to.be.calledWithExactly(mockPath, {
                     timeout: 5000,
                     baseURL: mockUrl,
-                    withCredentials: true
+                    auth: false
                 });
                 done();
             });
@@ -45,14 +45,21 @@ describe('Caller', () => {
 
         it('should call axios with the individual config if provided', (done) => {
             const mockConfig = {
-                timeout: 1000
+                timeout: 1000,
+                auth: {
+                    username: 'user',
+                    password: 'pass'
+                }
             };
             axiosStub.resolves(mockResponse);
             caller.get(mockPath, mockConfig).then(() => {
                 expect(axiosStub).to.be.calledWithExactly(mockPath, {
                     baseURL: mockUrl,
                     timeout: 1000,
-                    withCredentials: true
+                    auth: {
+                        username: 'user',
+                        password: 'pass'
+                    }
                 });
                 done();
             });
