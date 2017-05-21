@@ -28,15 +28,27 @@ import Smithers from 'smithers';
 // Basic setup - no authentication (config optional)
 const smithers = new Smithers('http://jenkinsurl.com', config);
 
-// Username & password auth (config optional)
-const smithers = new Smithers('http://username:password@jenkinsurl.com', config);
+// Username & password auth (config.auth required)
+const config = {
+    auth: {
+        username: 'username',
+        password: 'password'
+    }
+};
+const smithers = new Smithers('http://jenkinsurl.com', config);
 
-// Username & token auth (config optional)
-const smithers = new Smithers('http://username:token@jenkinsurl.com', config);
+// Username & token auth (config.auth required)
+const config = {
+    auth: {
+        username: 'username',
+        password: 'token'
+    }
+};
+const smithers = new Smithers('http://jenkinsurl.com', config);
 ```
 
 ### Configuration
-Configuration can be either passed when Smithers is instantiated or when a method is called.  The configuration is forwaded to the `axios` calls so look at the [axios documentation](https://github.com/mzabriskie/axios#request-config) to see the different options.
+Configuration can be either passed when Smithers is instantiated or when a method is called.  The configuration is forwarded to the `axios` calls so look at the [axios documentation](https://github.com/mzabriskie/axios#request-config) to see the different options.
 
 
 ### Methods
