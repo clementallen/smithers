@@ -1,4 +1,6 @@
 # Smithers
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/clementallen/smithers.svg)](https://greenkeeper.io/)
 Promise-based Node Jenkins API
 
 [![Build Status](https://img.shields.io/travis/clementallen/smithers.svg?style=flat-square)](https://travis-ci.org/clementallen/smithers)
