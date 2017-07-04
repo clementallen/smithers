@@ -1,4 +1,5 @@
 # Smithers
+
 Promise-based Node Jenkins API
 
 [![npm version](https://badge.fury.io/js/smithers.svg)](https://badge.fury.io/js/smithers)
@@ -7,6 +8,7 @@ Promise-based Node Jenkins API
 [![dependencies Status](https://david-dm.org/clementallen/smithers/status.svg)](https://david-dm.org/clementallen/smithers)
 [![devDependencies Status](https://david-dm.org/clementallen/smithers/dev-status.svg)](https://david-dm.org/clementallen/smithers?type=dev)
 [![Black Duck Security Risk](https://copilot.blackducksoftware.com/github/repos/clementallen/smithers/branches/master/badge-risk.svg)](https://copilot.blackducksoftware.com/github/repos/clementallen/smithers/branches/master)
+[![Greenkeeper badge](https://badges.greenkeeper.io/clementallen/smithers.svg)](https://greenkeeper.io/)
 
 ## Install
 
