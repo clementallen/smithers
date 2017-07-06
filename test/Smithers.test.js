@@ -44,40 +44,40 @@ describe('Smithers', () => {
         });
     });
 
-    describe('jobInfo', () => {
+    describe('job', () => {
         it('should resolve with Caller response', () => {
             callerGetStub.resolves(mockResponse);
-            return expect(smithers.jobInfo('jobName')).to.eventually.eql(mockResponse);
+            return expect(smithers.job('jobName')).to.eventually.eql(mockResponse);
         });
 
         it('should reject with Caller error', () => {
             callerGetStub.rejects(mockError);
-            return expect(smithers.jobInfo('jobName')).to.be.rejectedWith(mockError.message);
+            return expect(smithers.job('jobName')).to.be.rejectedWith(mockError.message);
         });
 
         it('should call Caller.get with the expected parameters', (done) => {
             callerGetStub.resolves(mockResponse);
-            smithers.jobInfo('jobName', mockConfig).then(() => {
+            smithers.job('jobName', mockConfig).then(() => {
                 expect(callerGetStub).to.be.calledWithExactly('/job/jobName/api/json', mockConfig);
                 done();
             });
         });
     });
 
-    describe('latestBuildInfo', () => {
+    describe('lastBuild', () => {
         it('should resolve with Caller response', () => {
             callerGetStub.resolves(mockResponse);
-            return expect(smithers.latestBuildInfo('jobName')).to.eventually.eql(mockResponse);
+            return expect(smithers.lastBuild('jobName')).to.eventually.eql(mockResponse);
         });
 
         it('should reject with Caller error', () => {
             callerGetStub.rejects(mockError);
-            return expect(smithers.latestBuildInfo('jobName')).to.be.rejectedWith(mockError.message);
+            return expect(smithers.lastBuild('jobName')).to.be.rejectedWith(mockError.message);
         });
 
         it('should call Caller.get with the expected parameters', (done) => {
             callerGetStub.resolves(mockResponse);
-            smithers.latestBuildInfo('jobName', mockConfig).then(() => {
+            smithers.lastBuild('jobName', mockConfig).then(() => {
                 expect(callerGetStub).to.be.calledWithExactly('/job/jobName/lastBuild/api/json', mockConfig);
                 done();
             });

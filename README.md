@@ -54,7 +54,7 @@ Configuration can be either passed when Smithers is instantiated or when a metho
 ### Methods
 
 #### `smithers.info([config])`
-The info method retrieves all data from the `/api/json` endpoint.
+Retrieves all data from the `/api/json` endpoint.
 ```javascript
 smithers.info().then((response) => {
     console.log(response);
@@ -63,20 +63,20 @@ smithers.info().then((response) => {
 });
 ```
 
-#### `smithers.jobInfo(name, [config])`
-The jobInfo method retrieves all data from a specific job
+#### `smithers.job(name, [config])`
+Retrieves all data from a specific job
 ```javascript
-smithers.jobInfo(name).then((response) => {
+smithers.job(name).then((response) => {
     console.log(response);
 }).catch((error) => {
     console.log(error);
 });
 ```
 
-#### `smithers.latestBuildInfo(name, [config])`
-The latestBuildInfo method retrieves all data from the latest build of a specifc job
+#### `smithers.lastBuild(name, [config])`
+Retrieves all data from the latest build of a specifc job
 ```javascript
-smithers.latestBuildInfo(name).then((response) => {
+smithers.lastBuild(name).then((response) => {
     console.log(response);
 }).catch((error) => {
     console.log(error);

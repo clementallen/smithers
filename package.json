@@ -5,8 +5,8 @@
   "main": "./lib/index.js",
   "scripts": {
     "build": "babel -d lib src",
-    "test": "mocha './test/**/*.test.js'",
-    "cover": "istanbul cover ./node_modules/mocha/bin/_mocha -- './test/**/*.test.js'",
+    "test": "mocha",
+    "cover": "istanbul cover ./node_modules/mocha/bin/_mocha",
     "lint": "eslint \"./{src,test}/**/*.js\"",
     "publish-please": "publish-please",
     "prepublish": "publish-please guard"

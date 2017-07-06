@@ -13,13 +13,13 @@ export default class Smithers {
         return this.caller.get(paths.info, config);
     }
 
-    jobInfo(name, config) {
-        const requestUrl = createPath(paths.jobInfo, { name });
+    job(name, config) {
+        const requestUrl = createPath(paths.job, { name });
         return this.caller.get(requestUrl, config);
     }
 
-    latestBuildInfo(name, config) {
-        const requestUrl = createPath(paths.latestBuildInfo, { name });
+    lastBuild(name, config) {
+        const requestUrl = createPath(paths.lastBuild, { name });
         return this.caller.get(requestUrl, config);
     }
 }
