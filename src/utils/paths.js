@@ -1,7 +1,7 @@
 const paths = {
     info: '/api/json',
-    jobInfo: '/job/{name}/api/json',
-    latestBuildInfo: '/job/{name}/lastBuild/api/json'
+    job: '/job/{name}/api/json',
+    lastBuild: '/job/{name}/lastBuild/api/json'
 };
 
 export default paths;
