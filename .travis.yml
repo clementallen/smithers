@@ -14,3 +14,6 @@ script:
     - yarn cover
 
 after_script: "cat coverage/lcov.info | node_modules/coveralls/bin/coveralls.js"
+
+after_success:
+  - bash <(curl -s https://copilot.blackducksoftware.com/ci/travis/scripts/upload)
