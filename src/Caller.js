@@ -27,4 +27,20 @@ export default class Caller {
                 });
         });
     }
+
+    post(path, config = this.axiosConfig) {
+        return new Promise((resolve, reject) => {
+            const requestConfig = Object.assign({
+                baseURL: this.axiosConfig.baseURL
+            }, config);
+
+            axios.post(path, requestConfig)
+                .then((response) => {
+                    resolve(response.data);
+                })
+                .catch((error) => {
+                    reject(formatError(error));
+                });
+        });
+    }
 }
