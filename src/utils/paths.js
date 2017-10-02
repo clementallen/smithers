@@ -5,7 +5,7 @@ const paths = {
     lastSuccessfulBuild: '/job/{name}/lastSuccessfulBuild/api/json',
     lastStableBuild: '/job/{name}/lastStableBuild/api/json',
     lastUnsuccessfulBuild: '/job/{name}/lastUnsuccessfulBuild/api/json',
-    specificBuild: '/job/{name}/{build}/api/json',
+    specificBuild: '/job/{name}/{buildNumber}/api/json',
     overallLoad: '/overallLoad/api/json',
     queue: '/queue/api/json'
 };

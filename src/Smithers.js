@@ -38,18 +38,16 @@ export default class Smithers {
         return this.caller.get(requestUrl, config);
     }
 
-    specificBuild(name, build, config) {
-        const requestUrl = createPath(paths.specificBuild, { name, build });
+    specificBuild(name, buildNumber, config) {
+        const requestUrl = createPath(paths.specificBuild, { name, buildNumber });
         return this.caller.get(requestUrl, config);
     }
 
     overallLoad(config) {
-        const requestUrl = createPath(paths.overallLoad);
-        return this.caller.get(requestUrl, config);
+        return this.caller.get(paths.overallLoad, config);
     }
 
     queue(config) {
-        const requestUrl = createPath(paths.queue);
-        return this.caller.get(requestUrl, config);
+        return this.caller.get(paths.queue, config);
     }
 }
