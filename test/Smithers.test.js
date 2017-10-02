@@ -83,4 +83,125 @@ describe('Smithers', () => {
             });
         });
     });
+
+    describe('lastSuccessfulBuild', () => {
+        it('should resolve with Caller response', () => {
+            callerGetStub.resolves(mockResponse);
+            return expect(smithers.lastSuccessfulBuild('jobName')).to.eventually.eql(mockResponse);
+        });
+
+        it('should reject with Caller error', () => {
+            callerGetStub.rejects(mockError);
+            return expect(smithers.lastSuccessfulBuild('jobName')).to.be.rejectedWith(mockError.message);
+        });
+
+        it('should call Caller.get with the expected parameters', (done) => {
+            callerGetStub.resolves(mockResponse);
+            smithers.lastSuccessfulBuild('jobName', mockConfig).then(() => {
+                expect(callerGetStub).to.be.calledWithExactly('/job/jobName/lastSuccessfulBuild/api/json', mockConfig);
+                done();
+            });
+        });
+    });
+
+    describe('lastStableBuild', () => {
+        it('should resolve with Caller response', () => {
+            callerGetStub.resolves(mockResponse);
+            return expect(smithers.lastStableBuild('jobName')).to.eventually.eql(mockResponse);
+        });
+
+        it('should reject with Caller error', () => {
+            callerGetStub.rejects(mockError);
+            return expect(smithers.lastStableBuild('jobName')).to.be.rejectedWith(mockError.message);
+        });
+
+        it('should call Caller.get with the expected parameters', (done) => {
+            callerGetStub.resolves(mockResponse);
+            smithers.lastStableBuild('jobName', mockConfig).then(() => {
+                expect(callerGetStub).to.be.calledWithExactly('/job/jobName/lastStableBuild/api/json', mockConfig);
+                done();
+            });
+        });
+    });
+
+    describe('lastUnsuccessfulBuild', () => {
+        it('should resolve with Caller response', () => {
+            callerGetStub.resolves(mockResponse);
+            return expect(smithers.lastUnsuccessfulBuild('jobName')).to.eventually.eql(mockResponse);
+        });
+
+        it('should reject with Caller error', () => {
+            callerGetStub.rejects(mockError);
+            return expect(smithers.lastUnsuccessfulBuild('jobName')).to.be.rejectedWith(mockError.message);
+        });
+
+        it('should call Caller.get with the expected parameters', (done) => {
+            callerGetStub.resolves(mockResponse);
+            smithers.lastUnsuccessfulBuild('jobName', mockConfig).then(() => {
+                expect(callerGetStub).to.be.calledWithExactly('/job/jobName/lastUnsuccessfulBuild/api/json', mockConfig);
+                done();
+            });
+        });
+    });
+
+    describe('specificBuild', () => {
+        const buildNumber = 100;
+        it('should resolve with Caller response', () => {
+            callerGetStub.resolves(mockResponse);
+            return expect(smithers.specificBuild('jobName', buildNumber)).to.eventually.eql(mockResponse);
+        });
+
+        it('should reject with Caller error', () => {
+            callerGetStub.rejects(mockError);
+            return expect(smithers.specificBuild('jobName', buildNumber)).to.be.rejectedWith(mockError.message);
+        });
+
+        it('should call Caller.get with the expected parameters', (done) => {
+            callerGetStub.resolves(mockResponse);
+            smithers.specificBuild('jobName', buildNumber, mockConfig).then(() => {
+                expect(callerGetStub).to.be.calledWithExactly('/job/jobName/100/api/json', mockConfig);
+                done();
+            });
+        });
+    });
+
+    describe('overallLoad', () => {
+        it('should resolve with Caller response', () => {
+            callerGetStub.resolves(mockResponse);
+            return expect(smithers.overallLoad()).to.eventually.eql(mockResponse);
+        });
+
+        it('should reject with Caller error', () => {
+            callerGetStub.rejects(mockError);
+            return expect(smithers.overallLoad()).to.be.rejectedWith(mockError.message);
+        });
+
+        it('should call Caller.get with the expected parameters', (done) => {
+            callerGetStub.resolves(mockResponse);
+            smithers.overallLoad(mockConfig).then(() => {
+                expect(callerGetStub).to.be.calledWithExactly('/overallLoad/api/json', mockConfig);
+                done();
+            });
+        });
+    });
+
+    describe('queue', () => {
+        it('should resolve with Caller response', () => {
+            callerGetStub.resolves(mockResponse);
+            return expect(smithers.queue()).to.eventually.eql(mockResponse);
+        });
+
+        it('should reject with Caller error', () => {
+            callerGetStub.rejects(mockError);
+            return expect(smithers.queue()).to.be.rejectedWith(mockError.message);
+        });
+
+        it('should call Caller.get with the expected parameters', (done) => {
+            callerGetStub.resolves(mockResponse);
+            smithers.queue(mockConfig).then(() => {
+                expect(callerGetStub).to.be.calledWithExactly('/queue/api/json', mockConfig);
+                done();
+            });
+        });
+    });
 });
