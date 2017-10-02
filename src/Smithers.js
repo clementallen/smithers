@@ -22,4 +22,32 @@ export default class Smithers {
         const requestUrl = createPath(paths.lastBuild, { name });
         return this.caller.get(requestUrl, config);
     }
+
+    lastSuccessfulBuild(name, config) {
+        const requestUrl = createPath(paths.lastSuccessfulBuild, { name });
+        return this.caller.get(requestUrl, config);
+    }
+
+    lastStableBuild(name, config) {
+        const requestUrl = createPath(paths.lastStableBuild, { name });
+        return this.caller.get(requestUrl, config);
+    }
+
+    lastUnsuccessfulBuild(name, config) {
+        const requestUrl = createPath(paths.lastUnsuccessfulBuild, { name });
+        return this.caller.get(requestUrl, config);
+    }
+
+    specificBuild(name, buildNumber, config) {
+        const requestUrl = createPath(paths.specificBuild, { name, buildNumber });
+        return this.caller.get(requestUrl, config);
+    }
+
+    overallLoad(config) {
+        return this.caller.get(paths.overallLoad, config);
+    }
+
+    queue(config) {
+        return this.caller.get(paths.queue, config);
+    }
 }

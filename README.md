@@ -82,3 +82,63 @@ smithers.lastBuild(name).then((response) => {
     console.log(error);
 });
 ```
+
+#### `smithers.lastSuccessfulBuild(name, [config])`
+Retrieves all data from the latest successful build of a specifc job
+```javascript
+smithers.lastSuccessfulBuild(name).then((response) => {
+    console.log(response);
+}).catch((error) => {
+    console.log(error);
+});
+```
+
+#### `smithers.lastStableBuild(name, [config])`
+Retrieves all data from the latest stable build of a specifc job
+```javascript
+smithers.lastStableBuild(name).then((response) => {
+    console.log(response);
+}).catch((error) => {
+    console.log(error);
+});
+```
+
+#### `smithers.lastUnsuccessfulBuild(name, [config])`
+Retrieves all data from the latest unsuccessful build of a specifc job
+```javascript
+smithers.lastUnsuccessfulBuild(name).then((response) => {
+    console.log(response);
+}).catch((error) => {
+    console.log(error);
+});
+```
+
+#### `smithers.specificBuild(name, buildNumber, [config])`
+Retrieves all data for a specific build of a specifc job
+```javascript
+smithers.specificBuild(name, buildNumber).then((response) => {
+    console.log(response);
+}).catch((error) => {
+    console.log(error);
+});
+```
+
+#### `smithers.overallLoad([config])`
+Retrieves statistics of the entire system (busy executors, queue length, etc...)
+```javascript
+smithers.overallLoad().then((response) => {
+    console.log(response);
+}).catch((error) => {
+    console.log(error);
+});
+```
+
+#### `smithers.queue([config])`
+Retrieves all data about the current queue
+```javascript
+smithers.queue().then((response) => {
+    console.log(response);
+}).catch((error) => {
+    console.log(error);
+});
+```
