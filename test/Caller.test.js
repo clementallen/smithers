@@ -10,6 +10,13 @@ describe('Caller', () => {
             callerProp: 'callerVal'
         }
     };
+    const mockConfig = {
+        timeout: 1000,
+        auth: {
+            username: 'user',
+            password: 'pass'
+        }
+    };
 
     const Caller = proxyquire('../src/Caller', {
         axios: {
@@ -52,13 +59,6 @@ describe('Caller', () => {
         });
 
         it('should call axios with the individual config if provided', (done) => {
-            const mockConfig = {
-                timeout: 1000,
-                auth: {
-                    username: 'user',
-                    password: 'pass'
-                }
-            };
             axiosGetStub.resolves(mockResponse);
             caller.get(mockPath, mockConfig).then(() => {
                 expect(axiosGetStub).to.be.calledWithExactly(mockPath, {
@@ -100,13 +100,6 @@ describe('Caller', () => {
             });
 
             it('should call axios with the individual config if provided', (done) => {
-                const mockConfig = {
-                    timeout: 1000,
-                    auth: {
-                        username: 'user',
-                        password: 'pass'
-                    }
-                };
                 axiosPostStub.resolves(mockResponse);
                 caller.post(mockPath, mockConfig).then(() => {
                     expect(axiosPostStub).to.be.calledWithExactly(mockPath, {
