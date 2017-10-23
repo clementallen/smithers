@@ -6,6 +6,7 @@ Promise-based Node Jenkins API
 [![Code Climate](https://img.shields.io/codeclimate/github/clementallen/smithers.svg?style=flat-square)](https://codeclimate.com/github/clementallen/smithers)
 [![dependencies Status](https://img.shields.io/david/clementallen/smithers.svg?style=flat-square)](https://david-dm.org/clementallen/smithers)
 [![devDependencies Status](https://img.shields.io/david/dev/clementallen/smithers.svg?style=flat-square)](https://david-dm.org/clementallen/smithers?type=dev)
+[![Black Duck Security Risk](https://copilot.blackducksoftware.com/github/repos/clementallen/smithers/branches/master/badge-risk.svg)](https://copilot.blackducksoftware.com/github/repos/clementallen/smithers/branches/master)
 
 ## Install
 
