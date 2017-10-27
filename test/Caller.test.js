@@ -72,46 +72,46 @@ describe('Caller', () => {
                 done();
             });
         });
+    });
 
-        describe('post', () => {
-            it('should resolve with the correct data', () => {
-                axiosPostStub.resolves(mockResponse);
+    describe('post', () => {
+        it('should resolve with the correct data', () => {
+            axiosPostStub.resolves(mockResponse);
 
-                return expect(caller.post(mockPath)).to.eventually.eql(mockResponse.data);
-            });
+            return expect(caller.post(mockPath)).to.eventually.eql(mockResponse.data);
+        });
 
-            it('should reject if response errors', () => {
-                const mockError = new Error('Caller Unavailable');
-                axiosPostStub.rejects(mockError);
+        it('should reject if response errors', () => {
+            const mockError = new Error('Caller Unavailable');
+            axiosPostStub.rejects(mockError);
 
-                return expect(caller.post(mockPath)).to.be.rejectedWith('Caller Unavailable');
-            });
+            return expect(caller.post(mockPath)).to.be.rejectedWith('Caller Unavailable');
+        });
 
-            it('should call axios with the instance config if no separate config provided', (done) => {
-                axiosPostStub.resolves(mockResponse);
-                caller.post(mockPath).then(() => {
-                    expect(axiosPostStub).to.be.calledWithExactly(mockPath, {
-                        timeout: 5000,
-                        baseURL: mockUrl,
-                        auth: false
-                    });
-                    done();
+        it('should call axios with the instance config if no separate config provided', (done) => {
+            axiosPostStub.resolves(mockResponse);
+            caller.post(mockPath).then(() => {
+                expect(axiosPostStub).to.be.calledWithExactly(mockPath, {
+                    timeout: 5000,
+                    baseURL: mockUrl,
+                    auth: false
                 });
+                done();
             });
+        });
 
-            it('should call axios with the individual config if provided', (done) => {
-                axiosPostStub.resolves(mockResponse);
-                caller.post(mockPath, mockConfig).then(() => {
-                    expect(axiosPostStub).to.be.calledWithExactly(mockPath, {
-                        baseURL: mockUrl,
-                        timeout: 1000,
-                        auth: {
-                            username: 'user',
-                            password: 'pass'
-                        }
-                    });
-                    done();
+        it('should call axios with the individual config if provided', (done) => {
+            axiosPostStub.resolves(mockResponse);
+            caller.post(mockPath, mockConfig).then(() => {
+                expect(axiosPostStub).to.be.calledWithExactly(mockPath, {
+                    baseURL: mockUrl,
+                    timeout: 1000,
+                    auth: {
+                        username: 'user',
+                        password: 'pass'
+                    }
                 });
+                done();
             });
         });
     });
