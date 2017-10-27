@@ -14,9 +14,7 @@ export default class Caller {
 
     get(path, config = this.axiosConfig) {
         return new Promise((resolve, reject) => {
-            const requestConfig = Object.assign({
-                baseURL: this.axiosConfig.baseURL
-            }, config);
+            const requestConfig = Object.assign({}, this.axiosConfig, config);
 
             axios.get(path, requestConfig)
                 .then((response) => {
@@ -30,9 +28,7 @@ export default class Caller {
 
     post(path, config = this.axiosConfig) {
         return new Promise((resolve, reject) => {
-            const requestConfig = Object.assign({
-                baseURL: this.axiosConfig.baseURL
-            }, config);
+            const requestConfig = Object.assign({}, this.axiosConfig, config);
 
             axios.post(path, requestConfig)
                 .then((response) => {
