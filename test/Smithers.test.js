@@ -186,6 +186,26 @@ describe('Smithers', () => {
         });
     });
 
+    describe('configXML', () => {
+        it('should resolve with Caller response', () => {
+            callerGetStub.resolves(mockResponse);
+            return expect(smithers.configXML('jobName')).to.eventually.eql(mockResponse);
+        });
+
+        it('should reject with Caller error', () => {
+            callerGetStub.rejects(mockError);
+            return expect(smithers.configXML('jobName')).to.be.rejectedWith(mockError.message);
+        });
+
+        it('should call Caller.get with the expected parameters', (done) => {
+            callerGetStub.resolves(mockResponse);
+            smithers.configXML('jobName', mockConfig).then(() => {
+                expect(callerGetStub).to.be.calledWithExactly('/job/jobName/config.xml', mockConfig);
+                done();
+            });
+        });
+    });
+
     describe('overallLoad', () => {
         it('should resolve with Caller response', () => {
             callerGetStub.resolves(mockResponse);
