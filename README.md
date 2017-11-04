@@ -8,12 +8,15 @@ Promise-based Node Jenkins API
 [![Black Duck Security Risk](https://copilot.blackducksoftware.com/github/repos/clementallen/smithers/branches/master/badge-risk.svg)](https://copilot.blackducksoftware.com/github/repos/clementallen/smithers/branches/master)
 
 ## Install
-```
-// yarn
-yarn add smithers
 
-// npm
-npm install --save smithers
+Using yarn:
+```bash
+$ yarn add smithers
+```
+
+Using npm:
+```bash
+$ npm install --save smithers
 ```
 
 ## Usage
@@ -64,6 +67,16 @@ smithers.info().then((response) => {
 Retrieves all data from a specific job
 ```javascript
 smithers.job(name).then((response) => {
+    console.log(response);
+}).catch((error) => {
+    console.log(error);
+});
+```
+
+#### `smithers.build(name, [config])`
+Triggers a build for the specific job
+```javascript
+smithers.build(name).then((response) => {
     console.log(response);
 }).catch((error) => {
     console.log(error);
