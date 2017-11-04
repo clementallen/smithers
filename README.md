@@ -3,7 +3,6 @@ Promise-based Node Jenkins API
 
 [![Build Status](https://img.shields.io/travis/clementallen/smithers.svg?style=flat-square)](https://travis-ci.org/clementallen/smithers)
 [![Coverage Status](https://img.shields.io/coveralls/clementallen/smithers.svg?style=flat-square)](https://coveralls.io/github/clementallen/smithers?branch=master)
-[![Code Climate](https://img.shields.io/codeclimate/github/clementallen/smithers.svg?style=flat-square)](https://codeclimate.com/github/clementallen/smithers)
 [![dependencies Status](https://img.shields.io/david/clementallen/smithers.svg?style=flat-square)](https://david-dm.org/clementallen/smithers)
 [![devDependencies Status](https://img.shields.io/david/dev/clementallen/smithers.svg?style=flat-square)](https://david-dm.org/clementallen/smithers?type=dev)
 [![Black Duck Security Risk](https://copilot.blackducksoftware.com/github/repos/clementallen/smithers/branches/master/badge-risk.svg)](https://copilot.blackducksoftware.com/github/repos/clementallen/smithers/branches/master)
@@ -115,6 +114,16 @@ smithers.lastUnsuccessfulBuild(name).then((response) => {
 Retrieves all data for a specific build of a specifc job
 ```javascript
 smithers.specificBuild(name, buildNumber).then((response) => {
+    console.log(response);
+}).catch((error) => {
+    console.log(error);
+});
+```
+
+#### `smithers.configXML(name, [config])`
+Retrieves the XML config of a specifc job
+```javascript
+smithers.configXML(name).then((response) => {
     console.log(response);
 }).catch((error) => {
     console.log(error);

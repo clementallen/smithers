@@ -48,6 +48,11 @@ export default class Smithers {
         return this.caller.get(requestUrl, config);
     }
 
+    configXML(name, config) {
+        const requestUrl = createPath(paths.configXML, { name });
+        return this.caller.get(requestUrl, config);
+    }
+
     overallLoad(config) {
         return this.caller.get(paths.overallLoad, config);
     }
