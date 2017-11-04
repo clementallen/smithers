@@ -9,14 +9,11 @@ Promise-based Node Jenkins API
 [![Black Duck Security Risk](https://copilot.blackducksoftware.com/github/repos/clementallen/smithers/branches/master/badge-risk.svg)](https://copilot.blackducksoftware.com/github/repos/clementallen/smithers/branches/master)
 
 ## Install
-
-### Yarn
 ```
+// yarn
 yarn add smithers
-```
 
-### NPM
-```
+// npm
 npm install --save smithers
 ```
 

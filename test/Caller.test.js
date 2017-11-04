@@ -50,8 +50,8 @@ describe('Caller', () => {
             axiosGetStub.resolves(mockResponse);
             caller.get(mockPath).then(() => {
                 expect(axiosGetStub).to.be.calledWithExactly(mockPath, {
-                    timeout: 5000,
                     baseURL: mockUrl,
+                    timeout: 5000,
                     auth: false
                 });
                 done();
@@ -59,11 +59,19 @@ describe('Caller', () => {
         });
 
         it('should call axios with the individual config if provided', (done) => {
+            const newMockConfig = Object.assign({}, mockConfig, {
+                params: {
+                    tree: 'tree'
+                }
+            });
             axiosGetStub.resolves(mockResponse);
-            caller.get(mockPath, mockConfig).then(() => {
+            caller.get(mockPath, newMockConfig).then(() => {
                 expect(axiosGetStub).to.be.calledWithExactly(mockPath, {
                     baseURL: mockUrl,
                     timeout: 1000,
+                    params: {
+                        tree: 'tree'
+                    },
                     auth: {
                         username: 'user',
                         password: 'pass'
@@ -92,8 +100,8 @@ describe('Caller', () => {
             axiosPostStub.resolves(mockResponse);
             caller.post(mockPath).then(() => {
                 expect(axiosPostStub).to.be.calledWithExactly(mockPath, {
-                    timeout: 5000,
                     baseURL: mockUrl,
+                    timeout: 5000,
                     auth: false
                 });
                 done();
@@ -101,11 +109,19 @@ describe('Caller', () => {
         });
 
         it('should call axios with the individual config if provided', (done) => {
+            const newMockConfig = Object.assign({}, mockConfig, {
+                params: {
+                    tree: 'tree'
+                }
+            });
             axiosPostStub.resolves(mockResponse);
-            caller.post(mockPath, mockConfig).then(() => {
+            caller.post(mockPath, newMockConfig).then(() => {
                 expect(axiosPostStub).to.be.calledWithExactly(mockPath, {
                     baseURL: mockUrl,
                     timeout: 1000,
+                    params: {
+                        tree: 'tree'
+                    },
                     auth: {
                         username: 'user',
                         password: 'pass'
