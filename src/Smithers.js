@@ -18,6 +18,11 @@ export default class Smithers {
         return this.caller.get(requestUrl, config);
     }
 
+    build(name, config) {
+        const requestUrl = createPath(paths.build, { name });
+        return this.caller.post(requestUrl, config);
+    }
+
     lastBuild(name, config) {
         const requestUrl = createPath(paths.lastBuild, { name });
         return this.caller.get(requestUrl, config);

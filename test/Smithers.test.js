@@ -12,15 +12,18 @@ describe('Smithers', () => {
         timeout: 1000
     };
     const callerGetStub = sinon.stub();
+    const callerPostStub = sinon.stub();
     const smithers = new Smithers(mockUrl);
 
     beforeEach(() => {
         sandbox = sinon.sandbox.create();
         sandbox.stub(Caller.prototype, 'get').callsFake(callerGetStub);
+        sandbox.stub(Caller.prototype, 'post').callsFake(callerPostStub);
     });
 
     afterEach(() => {
         callerGetStub.reset();
+        callerPostStub.reset();
         sandbox.restore();
     });
 
@@ -59,6 +62,26 @@ describe('Smithers', () => {
             callerGetStub.resolves(mockResponse);
             smithers.job('jobName', mockConfig).then(() => {
                 expect(callerGetStub).to.be.calledWithExactly('/job/jobName/api/json', mockConfig);
+                done();
+            });
+        });
+    });
+
+    describe('build', () => {
+        it('should resolve with Caller response', () => {
+            callerPostStub.resolves(mockResponse);
+            return expect(smithers.build('jobName')).to.eventually.eql(mockResponse);
+        });
+
+        it('should reject with Caller error', () => {
+            callerPostStub.rejects(mockError);
+            return expect(smithers.build('jobName')).to.be.rejectedWith(mockError.message);
+        });
+
+        it('should call Caller.get with the expected parameters', (done) => {
+            callerPostStub.resolves(mockResponse);
+            smithers.build('jobName', mockConfig).then(() => {
+                expect(callerPostStub).to.be.calledWithExactly('/job/jobName/build', mockConfig);
                 done();
             });
         });
