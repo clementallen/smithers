@@ -1,8 +1,7 @@
 import proxyquire from 'proxyquire';
 
 describe('Caller', () => {
-    const axiosGetStub = sinon.stub();
-    const axiosPostStub = sinon.stub();
+    const axiosStub = sinon.stub();
     const mockPath = '/test/path';
     const mockUrl = 'http://example.com';
     const mockResponse = {
@@ -19,38 +18,36 @@ describe('Caller', () => {
     };
 
     const Caller = proxyquire('../src/Caller', {
-        axios: {
-            get: axiosGetStub,
-            post: axiosPostStub
-        }
+        axios: axiosStub
     });
 
     const caller = new Caller(mockUrl);
 
     afterEach(() => {
-        axiosGetStub.reset();
-        axiosPostStub.reset();
+        axiosStub.reset();
     });
 
     describe('get', () => {
         it('should resolve with the correct data', () => {
-            axiosGetStub.resolves(mockResponse);
+            axiosStub.resolves(mockResponse);
 
             return expect(caller.get(mockPath)).to.eventually.eql(mockResponse.data);
         });
 
         it('should reject if response errors', () => {
             const mockError = new Error('Caller Unavailable');
-            axiosGetStub.rejects(mockError);
+            axiosStub.rejects(mockError);
 
             return expect(caller.get(mockPath)).to.be.rejectedWith('Caller Unavailable');
         });
 
         it('should call axios with the instance config if no separate config provided', (done) => {
-            axiosGetStub.resolves(mockResponse);
+            axiosStub.resolves(mockResponse);
             caller.get(mockPath).then(() => {
-                expect(axiosGetStub).to.be.calledWithExactly(mockPath, {
+                expect(axiosStub).to.be.calledWithExactly({
                     baseURL: mockUrl,
+                    method: 'GET',
+                    url: 'http://example.com/test/path',
                     timeout: 5000,
                     auth: false
                 });
@@ -64,10 +61,12 @@ describe('Caller', () => {
                     tree: 'tree'
                 }
             });
-            axiosGetStub.resolves(mockResponse);
+            axiosStub.resolves(mockResponse);
             caller.get(mockPath, newMockConfig).then(() => {
-                expect(axiosGetStub).to.be.calledWithExactly(mockPath, {
+                expect(axiosStub).to.be.calledWithExactly({
                     baseURL: mockUrl,
+                    method: 'GET',
+                    url: 'http://example.com/test/path',
                     timeout: 1000,
                     params: {
                         tree: 'tree'
@@ -84,23 +83,25 @@ describe('Caller', () => {
 
     describe('post', () => {
         it('should resolve with the correct data', () => {
-            axiosPostStub.resolves(mockResponse);
+            axiosStub.resolves(mockResponse);
 
             return expect(caller.post(mockPath)).to.eventually.eql(mockResponse.data);
         });
 
         it('should reject if response errors', () => {
             const mockError = new Error('Caller Unavailable');
-            axiosPostStub.rejects(mockError);
+            axiosStub.rejects(mockError);
 
             return expect(caller.post(mockPath)).to.be.rejectedWith('Caller Unavailable');
         });
 
         it('should call axios with the instance config if no separate config provided', (done) => {
-            axiosPostStub.resolves(mockResponse);
+            axiosStub.resolves(mockResponse);
             caller.post(mockPath).then(() => {
-                expect(axiosPostStub).to.be.calledWithExactly(mockPath, {
+                expect(axiosStub).to.be.calledWithExactly({
                     baseURL: mockUrl,
+                    method: 'POST',
+                    url: 'http://example.com/test/path',
                     timeout: 5000,
                     auth: false
                 });
@@ -114,10 +115,12 @@ describe('Caller', () => {
                     tree: 'tree'
                 }
             });
-            axiosPostStub.resolves(mockResponse);
+            axiosStub.resolves(mockResponse);
             caller.post(mockPath, newMockConfig).then(() => {
-                expect(axiosPostStub).to.be.calledWithExactly(mockPath, {
+                expect(axiosStub).to.be.calledWithExactly({
                     baseURL: mockUrl,
+                    method: 'POST',
+                    url: 'http://example.com/test/path',
                     timeout: 1000,
                     params: {
                         tree: 'tree'

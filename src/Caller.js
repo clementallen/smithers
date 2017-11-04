@@ -12,25 +12,21 @@ export default class Caller {
         };
     }
 
-    get(path, config = this.axiosConfig) {
-        return new Promise((resolve, reject) => {
-            const requestConfig = Object.assign({}, this.axiosConfig, config);
-
-            axios.get(path, requestConfig)
-                .then((response) => {
-                    resolve(response.data);
-                })
-                .catch((error) => {
-                    reject(formatError(error));
-                });
-        });
+    get(path, config) {
+        return this.call('GET', path, config);
     }
 
-    post(path, config = this.axiosConfig) {
+    post(path, config) {
+        return this.call('POST', path, config);
+    }
+
+    call(method, path, config) {
         return new Promise((resolve, reject) => {
             const requestConfig = Object.assign({}, this.axiosConfig, config);
+            requestConfig.method = method;
+            requestConfig.url = `${requestConfig.baseURL}${path}`;
 
-            axios.post(path, requestConfig)
+            axios(requestConfig)
                 .then((response) => {
                     resolve(response.data);
                 })
