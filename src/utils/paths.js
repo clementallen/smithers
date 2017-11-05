@@ -10,5 +10,6 @@ export default {
     specificBuild: '/job/{name}/{buildNumber}/api/json',
     configXML: '/job/{name}/config.xml',
     overallLoad: '/overallLoad/api/json',
-    queue: '/queue/api/json'
+    queue: '/queue/api/json',
+    crumbIssuer: '/crumbIssuer/api/json'
 };
