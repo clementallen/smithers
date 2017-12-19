@@ -1,10 +1,11 @@
 # Smithers
 Promise-based Node Jenkins API
 
-[![Build Status](https://img.shields.io/travis/clementallen/smithers.svg?style=flat-square)](https://travis-ci.org/clementallen/smithers)
-[![Coverage Status](https://img.shields.io/coveralls/clementallen/smithers.svg?style=flat-square)](https://coveralls.io/github/clementallen/smithers?branch=master)
-[![dependencies Status](https://img.shields.io/david/clementallen/smithers.svg?style=flat-square)](https://david-dm.org/clementallen/smithers)
-[![devDependencies Status](https://img.shields.io/david/dev/clementallen/smithers.svg?style=flat-square)](https://david-dm.org/clementallen/smithers?type=dev)
+[![npm version](https://badge.fury.io/js/smithers.svg)](https://badge.fury.io/js/smithers)
+[![Build Status](https://travis-ci.org/clementallen/smithers.svg?branch=master)](https://travis-ci.org/clementallen/smithers)
+[![Coverage Status](https://coveralls.io/repos/github/clementallen/smithers/badge.svg?branch=master)](https://coveralls.io/github/clementallen/smithers?branch=master)
+[![dependencies Status](https://david-dm.org/clementallen/smithers/status.svg)](https://david-dm.org/clementallen/smithers)
+[![devDependencies Status](https://david-dm.org/clementallen/smithers/dev-status.svg)](https://david-dm.org/clementallen/smithers?type=dev)
 [![Black Duck Security Risk](https://copilot.blackducksoftware.com/github/repos/clementallen/smithers/branches/master/badge-risk.svg)](https://copilot.blackducksoftware.com/github/repos/clementallen/smithers/branches/master)
 
 ## Install
@@ -22,29 +23,36 @@ $ npm install --save smithers
 ## Usage
 
 ### Setup
+
+#### Basic setup - no authentication (config optional)
 ``` javascript
 import Smithers from 'smithers';
 
-// Basic setup - no authentication (config optional)
 const smithers = new Smithers('http://jenkinsurl.com', config);
+```
 
-// Username & password auth (config.auth required)
-const config = {
+#### Username & password auth (config.auth required)
+``` javascript
+import Smithers from 'smithers';
+
+const smithers = new Smithers('http://jenkinsurl.com', {
     auth: {
         username: 'username',
         password: 'password'
     }
-};
-const smithers = new Smithers('http://jenkinsurl.com', config);
+});
+```
 
-// Username & token auth (config.auth required)
-const config = {
+#### Username & token auth (config.auth required)
+```javascript
+import Smithers from 'smithers';
+
+const smithers = new Smithers('http://jenkinsurl.com', {
     auth: {
         username: 'username',
         password: 'token'
     }
-};
-const smithers = new Smithers('http://jenkinsurl.com', config);
+);
 ```
 
 ### Configuration
