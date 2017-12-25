@@ -4,3 +4,4 @@ test
 .eslintrc
 .publishrc
 .travis.yml
+.nyc_output
