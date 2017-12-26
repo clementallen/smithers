@@ -28,7 +28,7 @@ export default class Caller {
 
         try {
             const response = await axios(requestConfig);
-            return response.data;
+            return (response.data !== '') ? response.data : 'Request successful';
         } catch (error) {
             throw formatError(error);
         }
