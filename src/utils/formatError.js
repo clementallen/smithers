@@ -7,5 +7,5 @@ export default (error) => {
         formattedError = error.message;
     }
 
-    return formattedError;
+    return `Error: ${formattedError}`;
 };
