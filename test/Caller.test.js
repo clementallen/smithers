@@ -34,6 +34,14 @@ describe('Caller', () => {
             return expect(caller.get(mockPath)).to.eventually.eql(mockResponse.data);
         });
 
+        it('should resolve with a standard message if response.data is empty', () => {
+            axiosStub.resolves({
+                data: ''
+            });
+
+            return expect(caller.get(mockPath)).to.eventually.eql('Request successful');
+        });
+
         it('should reject if response errors', () => {
             const mockError = new Error('Caller Unavailable');
             axiosStub.rejects(mockError);
@@ -86,6 +94,14 @@ describe('Caller', () => {
             axiosStub.resolves(mockResponse);
 
             return expect(caller.post(mockPath)).to.eventually.eql(mockResponse.data);
+        });
+
+        it('should resolve with a standard message if response.data is empty', () => {
+            axiosStub.resolves({
+                data: ''
+            });
+
+            return expect(caller.get(mockPath)).to.eventually.eql('Request successful');
         });
 
         it('should reject if response errors', () => {

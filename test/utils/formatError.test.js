@@ -13,7 +13,7 @@ describe('formatError', () => {
 
         const actual = formatError(mockError);
 
-        expect(actual).to.equal(expected);
+        expect(actual).to.equal(`Error: ${expected}`);
     });
 
     it('should return the error object message if response does not exist', () => {
@@ -22,6 +22,6 @@ describe('formatError', () => {
 
         const actual = formatError(mockError);
 
-        expect(actual).to.equal(mockMessage);
+        expect(actual).to.equal(`Error: ${mockMessage}`);
     });
 });
