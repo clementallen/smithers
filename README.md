@@ -12,12 +12,6 @@ Promise-based Node Jenkins API
 
 ## Install
 
-Using yarn:
-```bash
-$ yarn add smithers
-```
-
-Using npm:
 ```bash
 $ npm install --save smithers
 ```
@@ -27,14 +21,14 @@ $ npm install --save smithers
 ### Setup
 
 #### Basic setup - no authentication (config optional)
-``` javascript
+```javascript
 import Smithers from 'smithers';
 
 const smithers = new Smithers('http://jenkinsurl.com', config);
 ```
 
 #### Username & password auth (config.auth required)
-``` javascript
+```javascript
 import Smithers from 'smithers';
 
 const smithers = new Smithers('http://jenkinsurl.com', {
