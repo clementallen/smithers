@@ -16,7 +16,7 @@ describe('Smithers', () => {
     const smithers = new Smithers(mockUrl);
 
     beforeEach(() => {
-        sandbox = sinon.sandbox.create();
+        sandbox = sinon.createSandbox();
         sandbox.stub(Caller.prototype, 'get').callsFake(callerGetStub);
         sandbox.stub(Caller.prototype, 'post').callsFake(callerPostStub);
     });
