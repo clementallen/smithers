@@ -1,15 +1,10 @@
 {
     "presets": [
-        [
-            "env",
-            {
-                "targets": {
-                    "browsers": [
-                        "last 2 Chrome versions"
-                    ]
-                }
+        [ "env", {
+            "targets": {
+                "node": [ 6 ]
             }
-        ]
+        }]
     ],
     "plugins": [
         "add-module-exports"
