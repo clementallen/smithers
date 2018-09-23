@@ -8,7 +8,8 @@ export default class Caller {
         this.axiosConfig = {
             timeout: this.config.timeout || 5000,
             baseURL: this.url,
-            auth: this.config.auth || false
+            auth: this.config.auth || false,
+            headers: this.config.headers || {}
         };
     }
 
@@ -20,20 +21,16 @@ export default class Caller {
         return this.call('POST', path, config);
     }
 
-    call(method, path, config) {
-        return new Promise((resolve, reject) => {
-            const requestConfig = Object.assign({}, this.axiosConfig, config);
-            requestConfig.method = method;
-            requestConfig.url = `${requestConfig.baseURL}${path}`;
+    async call(method, path, config) {
+        const requestConfig = Object.assign({}, this.axiosConfig, config);
+        requestConfig.method = method;
+        requestConfig.url = `${requestConfig.baseURL}${path}`;
 
-            axios(requestConfig)
-                .then((response) => {
-                    const result = (response.data !== '') ? response.data : 'Request successful';
-                    resolve(result);
-                })
-                .catch((error) => {
-                    reject(formatError(error));
-                });
-        });
+        try {
+            const response = await axios(requestConfig);
+            return (response.data !== '') ? response.data : 'Request successful';
+        } catch (error) {
+            throw formatError(error);
+        }
     }
 }

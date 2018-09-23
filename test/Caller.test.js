@@ -54,6 +54,7 @@ describe('Caller', () => {
             caller.get(mockPath).then(() => {
                 expect(axiosStub).to.be.calledWithExactly({
                     baseURL: mockUrl,
+                    headers: {},
                     method: 'GET',
                     url: 'http://example.com/test/path',
                     timeout: 5000,
@@ -73,6 +74,7 @@ describe('Caller', () => {
             caller.get(mockPath, newMockConfig).then(() => {
                 expect(axiosStub).to.be.calledWithExactly({
                     baseURL: mockUrl,
+                    headers: {},
                     method: 'GET',
                     url: 'http://example.com/test/path',
                     timeout: 1000,
@@ -116,6 +118,7 @@ describe('Caller', () => {
             caller.post(mockPath).then(() => {
                 expect(axiosStub).to.be.calledWithExactly({
                     baseURL: mockUrl,
+                    headers: {},
                     method: 'POST',
                     url: 'http://example.com/test/path',
                     timeout: 5000,
@@ -135,6 +138,7 @@ describe('Caller', () => {
             caller.post(mockPath, newMockConfig).then(() => {
                 expect(axiosStub).to.be.calledWithExactly({
                     baseURL: mockUrl,
+                    headers: {},
                     method: 'POST',
                     url: 'http://example.com/test/path',
                     timeout: 1000,
