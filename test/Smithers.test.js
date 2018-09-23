@@ -1,4 +1,4 @@
-import Smithers from '../src/Smithers';
+import proxyquire from 'proxyquire';
 import Caller from '../src/Caller';
 
 describe('Smithers', () => {
@@ -13,6 +13,11 @@ describe('Smithers', () => {
     };
     const callerGetStub = sinon.stub();
     const callerPostStub = sinon.stub();
+    const crumbIssuerStub = sinon.stub();
+
+    const Smithers = proxyquire('../src/Smithers', {
+        './utils/crumbIssuer': crumbIssuerStub
+    });
     const smithers = new Smithers(mockUrl);
 
     beforeEach(() => {
@@ -25,6 +30,41 @@ describe('Smithers', () => {
         callerGetStub.reset();
         callerPostStub.reset();
         sandbox.restore();
+    });
+
+    describe('init', () => {
+        afterEach(() => {
+            crumbIssuerStub.reset();
+        });
+
+        it('should set the crumb details in the instance config', async () => {
+            crumbIssuerStub.resolves({
+                crumb: 'abcd1234',
+                crumbRequestField: 'crumb-field'
+            });
+            const smithersInstance = new Smithers(mockUrl, {
+                crumbIssuer: true
+            });
+            await smithersInstance.info();
+            expect(smithersInstance.config).to.eql({
+                crumbIssuer: true,
+                headers: {
+                    'crumb-field': 'abcd1234'
+                }
+            });
+        });
+
+        it('should handle crumb errors', async () => {
+            crumbIssuerStub.rejects(mockError);
+            try {
+                const smithersInstance = new Smithers(mockUrl, {
+                    crumbIssuer: true
+                });
+                await smithersInstance.info();
+            } catch (e) {
+                expect(e).to.equal(mockError);
+            }
+        });
     });
 
     describe('info', () => {

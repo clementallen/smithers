@@ -1,29 +1,29 @@
 import asyncWrapper from '../../src/utils/asyncWrapper';
 
-const delay = (t = 1000) => new Promise(resolve => setTimeout(resolve, t));
+const delay = () => new Promise(resolve => setTimeout(resolve, 10));
 
 class MockClass {
-    constructor(login, pass) {
-        this.login = login;
-        this.pass = pass;
-        // simulate api call for auth key
+    constructor() {
+        this.config = '';
+
+        // simulate api call for config
         this.init = delay().then(() => {
-            this.apiKey = 'SECRET_API_KEY';
+            this.config = 'CONFIG VALUE';
         });
     }
 
-    action() {
-        if (!this.apiKey) {
-            throw new Error();
-        }
+    getConfig() {
+        return this.config;
     }
 }
 
 describe('asyncWrapper', () => {
-    it('should wait for async constructor', () => {
+    it('should wait for async constructor', async () => {
         asyncWrapper(MockClass);
 
-        const client = new MockClass('login', 'pass');
-        return client.action();
+        const client = new MockClass();
+
+        const key = await client.getConfig();
+        expect(key).to.equal('CONFIG VALUE');
     });
 });
