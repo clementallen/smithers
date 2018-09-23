@@ -7,7 +7,8 @@
     "build": "babel -d lib src",
     "test": "nyc mocha",
     "cover": "npm run test && nyc report --reporter=lcov",
-    "lint": "eslint \"./{src,test}/**/*.js\""
+    "lint": "eslint \"./{src,test}/**/*.js\"",
+    "release": "np"
   },
   "repository": {
     "type": "git",
@@ -36,6 +37,7 @@
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.11.1",
     "mocha": "^5.2.0",
+    "np": "^3.0.4",
     "nyc": "^13.0.1",
     "proxyquire": "^2.1.0",
     "sinon": "^6.3.4",
