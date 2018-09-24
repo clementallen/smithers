@@ -1,4 +1,5 @@
 import asyncWrapper from './utils/asyncWrapper';
+import throwIfMissing from './utils/throwIfMissing';
 import crumbIssuer from './utils/crumbIssuer';
 import createPath from './utils/createPath';
 import paths from './utils/paths';
@@ -31,47 +32,47 @@ class Smithers {
         return this.caller.get(paths.info, config);
     }
 
-    job(name, config) {
+    job(name = throwIfMissing('name'), config) {
         const requestUrl = createPath(paths.job, { name });
         return this.caller.get(requestUrl, config);
     }
 
-    build(name, config) {
+    build(name = throwIfMissing('name'), config) {
         const requestUrl = createPath(paths.build, { name });
         return this.caller.post(requestUrl, config);
     }
 
-    lastBuild(name, config) {
+    lastBuild(name = throwIfMissing('name'), config) {
         const requestUrl = createPath(paths.lastBuild, { name });
         return this.caller.get(requestUrl, config);
     }
 
-    lastSuccessfulBuild(name, config) {
+    lastSuccessfulBuild(name = throwIfMissing('name'), config) {
         const requestUrl = createPath(paths.lastSuccessfulBuild, { name });
         return this.caller.get(requestUrl, config);
     }
 
-    lastStableBuild(name, config) {
+    lastStableBuild(name = throwIfMissing('name'), config) {
         const requestUrl = createPath(paths.lastStableBuild, { name });
         return this.caller.get(requestUrl, config);
     }
 
-    lastUnsuccessfulBuild(name, config) {
+    lastUnsuccessfulBuild(name = throwIfMissing('name'), config) {
         const requestUrl = createPath(paths.lastUnsuccessfulBuild, { name });
         return this.caller.get(requestUrl, config);
     }
 
-    lastFailedBuild(name, config) {
+    lastFailedBuild(name = throwIfMissing('name'), config) {
         const requestUrl = createPath(paths.lastFailedBuild, { name });
         return this.caller.get(requestUrl, config);
     }
 
-    specificBuild(name, buildNumber, config) {
+    specificBuild(name = throwIfMissing('name'), buildNumber = throwIfMissing('buildNumber'), config) {
         const requestUrl = createPath(paths.specificBuild, { name, buildNumber });
         return this.caller.get(requestUrl, config);
     }
 
-    configXML(name, config) {
+    configXML(name = throwIfMissing('name'), config) {
         const requestUrl = createPath(paths.configXML, { name });
         return this.caller.get(requestUrl, config);
     }

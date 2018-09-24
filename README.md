@@ -51,10 +51,12 @@ const smithers = new Smithers('https://jenkinsurl.com', {
 );
 ```
 
+
 ### Configuration
 Configuration can be either passed when Smithers is instantiated or when a method is called.  The configuration is forwarded to the `axios` calls so look at the [axios documentation](https://github.com/mzabriskie/axios#request-config) to see the different options.
 
 - **crumbIssuer (Boolean, default: false)**: Enables CSRF crumb support for post requests
+- **timeout (Int, default: 5000)**: Request timeout in milliseconds
 
 
 ### Methods
