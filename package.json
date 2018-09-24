@@ -1,7 +1,7 @@
 {
   "name": "smithers",
   "version": "0.2.0",
-  "description": "Async Jenkins API wrapper",
+  "description": "Async Jenkins API client",
   "main": "./lib/index.js",
   "scripts": {
     "build": "babel -d lib src",
