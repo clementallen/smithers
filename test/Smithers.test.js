@@ -105,6 +105,8 @@ describe('Smithers', () => {
                 done();
             });
         });
+
+        it('should throw an error if the name parameter is not provided', () => expect(smithers.job()).to.be.rejectedWith('Missing parameter: name'));
     });
 
     describe('build', () => {
@@ -125,6 +127,8 @@ describe('Smithers', () => {
                 done();
             });
         });
+
+        it('should throw an error if the name parameter is not provided', () => expect(smithers.build()).to.be.rejectedWith('Missing parameter: name'));
     });
 
     describe('lastBuild', () => {
@@ -145,6 +149,8 @@ describe('Smithers', () => {
                 done();
             });
         });
+
+        it('should throw an error if the name parameter is not provided', () => expect(smithers.lastBuild()).to.be.rejectedWith('Missing parameter: name'));
     });
 
     describe('lastSuccessfulBuild', () => {
@@ -165,6 +171,8 @@ describe('Smithers', () => {
                 done();
             });
         });
+
+        it('should throw an error if the name parameter is not provided', () => expect(smithers.lastSuccessfulBuild()).to.be.rejectedWith('Missing parameter: name'));
     });
 
     describe('lastStableBuild', () => {
@@ -185,6 +193,8 @@ describe('Smithers', () => {
                 done();
             });
         });
+
+        it('should throw an error if the name parameter is not provided', () => expect(smithers.lastStableBuild()).to.be.rejectedWith('Missing parameter: name'));
     });
 
     describe('lastUnsuccessfulBuild', () => {
@@ -205,6 +215,8 @@ describe('Smithers', () => {
                 done();
             });
         });
+
+        it('should throw an error if the name parameter is not provided', () => expect(smithers.lastUnsuccessfulBuild()).to.be.rejectedWith('Missing parameter: name'));
     });
 
     describe('lastFailedBuild', () => {
@@ -225,6 +237,8 @@ describe('Smithers', () => {
                 done();
             });
         });
+
+        it('should throw an error if the name parameter is not provided', () => expect(smithers.lastFailedBuild()).to.be.rejectedWith('Missing parameter: name'));
     });
 
     describe('specificBuild', () => {
@@ -247,6 +261,10 @@ describe('Smithers', () => {
                 done();
             });
         });
+
+        it('should throw an error if the name parameter is not provided', () => expect(smithers.specificBuild()).to.be.rejectedWith('Missing parameter: name'));
+
+        it('should throw an error if the name parameter is not provided', () => expect(smithers.specificBuild('jobName')).to.be.rejectedWith('Missing parameter: buildNumber'));
     });
 
     describe('configXML', () => {
@@ -267,6 +285,8 @@ describe('Smithers', () => {
                 done();
             });
         });
+
+        it('should throw an error if the name parameter is not provided', () => expect(smithers.configXML()).to.be.rejectedWith('Missing parameter: name'));
     });
 
     describe('overallLoad', () => {

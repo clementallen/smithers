@@ -27,9 +27,14 @@ describe('crumbIssuer', () => {
     });
 
     it('should throw the expected error', () => {
-        axiosGetStub.rejects(new Error('mock error'));
+        axiosGetStub.rejects({
+            response: {
+                status: 500,
+                statusText: 'Internal Error'
+            }
+        });
 
         return expect(crumbIssuer(mockUrl, mockConfig))
-            .to.eventually.be.rejectedWith('mock error');
+            .to.eventually.be.rejectedWith('500 | Internal Error');
     });
 });

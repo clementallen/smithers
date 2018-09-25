@@ -1,6 +1,6 @@
 # Smithers
 
-Promise-based Node Jenkins API
+Async Jenkins API client for browsers and node
 
 [![npm version](https://badge.fury.io/js/smithers.svg)](https://badge.fury.io/js/smithers)
 [![Build Status](https://travis-ci.org/clementallen/smithers.svg?branch=master)](https://travis-ci.org/clementallen/smithers)
@@ -24,14 +24,14 @@ $ npm install --save smithers
 ```javascript
 import Smithers from 'smithers';
 
-const smithers = new Smithers('http://jenkinsurl.com', config);
+const smithers = new Smithers('https://jenkinsurl.com', config);
 ```
 
 #### Username & password auth (config.auth required)
 ```javascript
 import Smithers from 'smithers';
 
-const smithers = new Smithers('http://jenkinsurl.com', {
+const smithers = new Smithers('https://jenkinsurl.com', {
     auth: {
         username: 'username',
         password: 'password'
@@ -43,7 +43,7 @@ const smithers = new Smithers('http://jenkinsurl.com', {
 ```javascript
 import Smithers from 'smithers';
 
-const smithers = new Smithers('http://jenkinsurl.com', {
+const smithers = new Smithers('https://jenkinsurl.com', {
     auth: {
         username: 'username',
         password: 'token'
@@ -51,8 +51,12 @@ const smithers = new Smithers('http://jenkinsurl.com', {
 );
 ```
 
+
 ### Configuration
 Configuration can be either passed when Smithers is instantiated or when a method is called.  The configuration is forwarded to the `axios` calls so look at the [axios documentation](https://github.com/mzabriskie/axios#request-config) to see the different options.
+
+- **crumbIssuer (Boolean, default: false)**: Enables CSRF crumb support for post requests
+- **timeout (Int, default: 5000)**: Request timeout in milliseconds
 
 
 ### Methods
