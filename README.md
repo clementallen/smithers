@@ -55,13 +55,13 @@ const smithers = new Smithers('https://jenkinsurl.com', {
 ### Configuration
 Configuration can be either passed when Smithers is instantiated or when a method is called.  The configuration is forwarded to the `axios` calls so look at the [axios documentation](https://github.com/mzabriskie/axios#request-config) to see the different options.
 
-- **crumbIssuer (Boolean, default: false)**: Enables CSRF crumb support for post requests
-- **timeout (Int, default: 5000)**: Request timeout in milliseconds
+- **crumbIssuer** *(Boolean, default: false)*: Enables CSRF crumb support for post requests
+- **timeout** *(Int, default: 5000)*: Request timeout in milliseconds
 
 
 ### Methods
 
-#### `smithers.info([config])`
+#### info([config])
 Retrieves all data from the `/api/json` endpoint.
 ```javascript
 smithers.info().then((response) => {
@@ -71,7 +71,7 @@ smithers.info().then((response) => {
 });
 ```
 
-#### `smithers.job(name, [config])`
+#### job(name, [config])
 Retrieves all data from a specific job
 ```javascript
 smithers.job(name).then((response) => {
@@ -81,7 +81,7 @@ smithers.job(name).then((response) => {
 });
 ```
 
-#### `smithers.build(name, [config])`
+#### build(name, [config])
 Triggers a build for the specific job
 ```javascript
 smithers.build(name).then((response) => {
@@ -91,7 +91,7 @@ smithers.build(name).then((response) => {
 });
 ```
 
-#### `smithers.lastBuild(name, [config])`
+#### lastBuild(name, [config])
 Retrieves all data from the latest build of a specifc job
 ```javascript
 smithers.lastBuild(name).then((response) => {
@@ -101,7 +101,7 @@ smithers.lastBuild(name).then((response) => {
 });
 ```
 
-#### `smithers.lastSuccessfulBuild(name, [config])`
+#### lastSuccessfulBuild(name, [config])
 Retrieves all data from the latest successful build of a specifc job
 ```javascript
 smithers.lastSuccessfulBuild(name).then((response) => {
@@ -111,7 +111,7 @@ smithers.lastSuccessfulBuild(name).then((response) => {
 });
 ```
 
-#### `smithers.lastStableBuild(name, [config])`
+#### lastStableBuild(name, [config])
 Retrieves all data from the latest stable build of a specifc job
 ```javascript
 smithers.lastStableBuild(name).then((response) => {
@@ -121,7 +121,7 @@ smithers.lastStableBuild(name).then((response) => {
 });
 ```
 
-#### `smithers.lastUnsuccessfulBuild(name, [config])`
+#### lastUnsuccessfulBuild(name, [config])
 Retrieves all data from the latest unsuccessful build of a specifc job
 ```javascript
 smithers.lastUnsuccessfulBuild(name).then((response) => {
@@ -131,7 +131,7 @@ smithers.lastUnsuccessfulBuild(name).then((response) => {
 });
 ```
 
-#### `smithers.specificBuild(name, buildNumber, [config])`
+#### specificBuild(name, buildNumber, [config])
 Retrieves all data for a specific build of a specifc job
 ```javascript
 smithers.specificBuild(name, buildNumber).then((response) => {
@@ -141,7 +141,7 @@ smithers.specificBuild(name, buildNumber).then((response) => {
 });
 ```
 
-#### `smithers.configXML(name, [config])`
+#### configXML(name, [config])
 Retrieves the XML config of a specifc job
 ```javascript
 smithers.configXML(name).then((response) => {
@@ -151,7 +151,7 @@ smithers.configXML(name).then((response) => {
 });
 ```
 
-#### `smithers.overallLoad([config])`
+#### overallLoad([config])
 Retrieves statistics of the entire system (busy executors, queue length, etc...)
 ```javascript
 smithers.overallLoad().then((response) => {
@@ -161,7 +161,7 @@ smithers.overallLoad().then((response) => {
 });
 ```
 
-#### `smithers.queue([config])`
+#### queue([config])
 Retrieves all data about the current queue
 ```javascript
 smithers.queue().then((response) => {
