@@ -1,4 +1,4 @@
-import createPath from '../../src/utils/createPath';
+import createPath from '../../../src/utils/createPath';
 
 describe('createPath', () => {
     it('should return plain string if no changes required', () => {

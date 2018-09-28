@@ -1,7 +1,8 @@
 src
 test
+coverage
+.nyc_output
 .babelrc
 .eslintrc
 .publishrc
 .travis.yml
-.nyc_output

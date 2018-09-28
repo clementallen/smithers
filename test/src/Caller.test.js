@@ -17,7 +17,7 @@ describe('Caller', () => {
         }
     };
 
-    const Caller = proxyquire('../src/Caller', {
+    const Caller = proxyquire('../../src/Caller', {
         axios: axiosStub
     });
 

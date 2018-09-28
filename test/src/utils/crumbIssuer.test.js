@@ -7,7 +7,7 @@ describe('crumbIssuer', () => {
     };
     const axiosGetStub = sinon.stub();
 
-    const crumbIssuer = proxyquire('../../src/utils/crumbIssuer', {
+    const crumbIssuer = proxyquire('../../../src/utils/crumbIssuer', {
         axios: {
             get: axiosGetStub
         }
