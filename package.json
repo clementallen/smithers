@@ -8,7 +8,9 @@
     "test": "nyc mocha",
     "cover": "npm run test && nyc report --reporter=lcov",
     "lint": "eslint \"./{src,test}/**/*.js\"",
-    "release": "np"
+    "changelog": "auto-changelog -p --tag-prefix v",
+    "release": "np",
+    "version": "npm run changelog && git add CHANGELOG.md"
   },
   "repository": {
     "type": "git",
@@ -24,6 +26,7 @@
   },
   "homepage": "https://github.com/clementallen/smithers#readme",
   "devDependencies": {
+    "auto-changelog": "^1.8.0",
     "babel-cli": "^6.26.0",
     "babel-plugin-add-module-exports": "^1.0.0",
     "babel-preset-env": "^1.7.0",
