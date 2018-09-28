@@ -1,4 +1,4 @@
-import formatError from '../../src/utils/formatError';
+import formatError from '../../../src/utils/formatError';
 
 describe('formatError', () => {
     const mockError = new Error('Unavailable');

@@ -1,5 +1,5 @@
 import proxyquire from 'proxyquire';
-import Caller from '../src/Caller';
+import Caller from '../../src/Caller';
 
 describe('Smithers', () => {
     let sandbox;
@@ -15,7 +15,7 @@ describe('Smithers', () => {
     const callerPostStub = sinon.stub();
     const crumbIssuerStub = sinon.stub();
 
-    const Smithers = proxyquire('../src/Smithers', {
+    const Smithers = proxyquire('../../src/Smithers', {
         './utils/crumbIssuer': crumbIssuerStub
     });
     const smithers = new Smithers(mockUrl);

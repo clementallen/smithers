@@ -1,4 +1,4 @@
-import asyncWrapper from '../../src/utils/asyncWrapper';
+import asyncWrapper from '../../../src/utils/asyncWrapper';
 
 const delay = () => new Promise(resolve => setTimeout(resolve, 10));
 
