@@ -11,7 +11,7 @@ class Smithers {
         this.config = config || {};
 
         if (this.config.crumbIssuer) {
-            this.config.headers = {};
+            this.config.headers = this.config.headers || {};
             this.init = new Promise((resolve, reject) => {
                 crumbIssuer(this.url, this.config).then((crumbResponse) => {
                     const { crumb, crumbRequestField } = crumbResponse;
