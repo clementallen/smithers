@@ -49,44 +49,40 @@ describe('Caller', () => {
             return expect(caller.get(mockPath)).to.be.rejectedWith('Caller Unavailable');
         });
 
-        it('should call axios with the instance config if no separate config provided', (done) => {
+        it('should call axios with the instance config if no separate config provided', async () => {
             axiosStub.resolves(mockResponse);
-            caller.get(mockPath).then(() => {
-                expect(axiosStub).to.be.calledWithExactly({
-                    baseURL: mockUrl,
-                    headers: {},
-                    method: 'GET',
-                    url: 'http://example.com/test/path',
-                    timeout: 5000,
-                    auth: false
-                });
-                done();
+            await caller.get(mockPath);
+            expect(axiosStub).to.be.calledWithExactly({
+                baseURL: mockUrl,
+                headers: {},
+                method: 'GET',
+                url: 'http://example.com/test/path',
+                timeout: 5000,
+                auth: false
             });
         });
 
-        it('should call axios with the individual config if provided', (done) => {
+        it('should call axios with the individual config if provided', async () => {
             const newMockConfig = Object.assign({}, mockConfig, {
                 params: {
                     tree: 'tree'
                 }
             });
             axiosStub.resolves(mockResponse);
-            caller.get(mockPath, newMockConfig).then(() => {
-                expect(axiosStub).to.be.calledWithExactly({
-                    baseURL: mockUrl,
-                    headers: {},
-                    method: 'GET',
-                    url: 'http://example.com/test/path',
-                    timeout: 1000,
-                    params: {
-                        tree: 'tree'
-                    },
-                    auth: {
-                        username: 'user',
-                        password: 'pass'
-                    }
-                });
-                done();
+            await caller.get(mockPath, newMockConfig);
+            expect(axiosStub).to.be.calledWithExactly({
+                baseURL: mockUrl,
+                headers: {},
+                method: 'GET',
+                url: 'http://example.com/test/path',
+                timeout: 1000,
+                params: {
+                    tree: 'tree'
+                },
+                auth: {
+                    username: 'user',
+                    password: 'pass'
+                }
             });
         });
     });
@@ -113,44 +109,40 @@ describe('Caller', () => {
             return expect(caller.post(mockPath)).to.be.rejectedWith('Caller Unavailable');
         });
 
-        it('should call axios with the instance config if no separate config provided', (done) => {
+        it('should call axios with the instance config if no separate config provided', async () => {
             axiosStub.resolves(mockResponse);
-            caller.post(mockPath).then(() => {
-                expect(axiosStub).to.be.calledWithExactly({
-                    baseURL: mockUrl,
-                    headers: {},
-                    method: 'POST',
-                    url: 'http://example.com/test/path',
-                    timeout: 5000,
-                    auth: false
-                });
-                done();
+            await caller.post(mockPath);
+            expect(axiosStub).to.be.calledWithExactly({
+                baseURL: mockUrl,
+                headers: {},
+                method: 'POST',
+                url: 'http://example.com/test/path',
+                timeout: 5000,
+                auth: false
             });
         });
 
-        it('should call axios with the individual config if provided', (done) => {
+        it('should call axios with the individual config if provided', async () => {
             const newMockConfig = Object.assign({}, mockConfig, {
                 params: {
                     tree: 'tree'
                 }
             });
             axiosStub.resolves(mockResponse);
-            caller.post(mockPath, newMockConfig).then(() => {
-                expect(axiosStub).to.be.calledWithExactly({
-                    baseURL: mockUrl,
-                    headers: {},
-                    method: 'POST',
-                    url: 'http://example.com/test/path',
-                    timeout: 1000,
-                    params: {
-                        tree: 'tree'
-                    },
-                    auth: {
-                        username: 'user',
-                        password: 'pass'
-                    }
-                });
-                done();
+            await caller.post(mockPath, newMockConfig);
+            expect(axiosStub).to.be.calledWithExactly({
+                baseURL: mockUrl,
+                headers: {},
+                method: 'POST',
+                url: 'http://example.com/test/path',
+                timeout: 1000,
+                params: {
+                    tree: 'tree'
+                },
+                auth: {
+                    username: 'user',
+                    password: 'pass'
+                }
             });
         });
     });
