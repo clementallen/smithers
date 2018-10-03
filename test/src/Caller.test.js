@@ -14,7 +14,8 @@ describe('Caller', () => {
         auth: {
             username: 'user',
             password: 'pass'
-        }
+        },
+        maxRedirects: 3
     };
 
     const Caller = proxyquire('../../src/Caller', {
@@ -50,15 +51,17 @@ describe('Caller', () => {
         });
 
         it('should call axios with the instance config if no separate config provided', async () => {
+            const newCaller = new Caller(mockUrl, {
+                maxRedirects: 2
+            });
             axiosStub.resolves(mockResponse);
-            await caller.get(mockPath);
+            await newCaller.get(mockPath);
             expect(axiosStub).to.be.calledWithExactly({
                 baseURL: mockUrl,
-                headers: {},
                 method: 'GET',
                 url: 'http://example.com/test/path',
                 timeout: 5000,
-                auth: false
+                maxRedirects: 2
             });
         });
 
@@ -72,7 +75,6 @@ describe('Caller', () => {
             await caller.get(mockPath, newMockConfig);
             expect(axiosStub).to.be.calledWithExactly({
                 baseURL: mockUrl,
-                headers: {},
                 method: 'GET',
                 url: 'http://example.com/test/path',
                 timeout: 1000,
@@ -82,7 +84,8 @@ describe('Caller', () => {
                 auth: {
                     username: 'user',
                     password: 'pass'
-                }
+                },
+                maxRedirects: 3
             });
         });
     });
@@ -110,15 +113,17 @@ describe('Caller', () => {
         });
 
         it('should call axios with the instance config if no separate config provided', async () => {
+            const newCaller = new Caller(mockUrl, {
+                maxRedirects: 2
+            });
             axiosStub.resolves(mockResponse);
-            await caller.post(mockPath);
+            await newCaller.post(mockPath);
             expect(axiosStub).to.be.calledWithExactly({
                 baseURL: mockUrl,
-                headers: {},
                 method: 'POST',
                 url: 'http://example.com/test/path',
                 timeout: 5000,
-                auth: false
+                maxRedirects: 2
             });
         });
 
@@ -132,7 +137,6 @@ describe('Caller', () => {
             await caller.post(mockPath, newMockConfig);
             expect(axiosStub).to.be.calledWithExactly({
                 baseURL: mockUrl,
-                headers: {},
                 method: 'POST',
                 url: 'http://example.com/test/path',
                 timeout: 1000,
@@ -142,7 +146,8 @@ describe('Caller', () => {
                 auth: {
                     username: 'user',
                     password: 'pass'
-                }
+                },
+                maxRedirects: 3
             });
         });
     });
