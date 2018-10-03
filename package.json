@@ -9,7 +9,7 @@
     "cover": "npm run test && nyc report --reporter=lcov",
     "lint": "eslint \"./{src,test}/**/*.js\"",
     "changelog": "auto-changelog -p --tag-prefix v",
-    "release": "np",
+    "release": "npm run build && np",
     "version": "npm run changelog && git add CHANGELOG.md"
   },
   "repository": {

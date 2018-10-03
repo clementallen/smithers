@@ -61,112 +61,70 @@ Configuration can be either passed when Smithers is instantiated or when a metho
 
 ### Methods
 
+*Note: These examples are using `async/await` but work perfectly with `.then` and `.catch` as well*
+
 #### info([config])
 Retrieves all data from the `/api/json` endpoint.
 ```javascript
-smithers.info().then((response) => {
-    console.log(response);
-}).catch((error) => {
-    console.log(error);
-});
+await smithers.info();
 ```
 
 #### job(name, [config])
 Retrieves all data from a specific job
 ```javascript
-smithers.job(name).then((response) => {
-    console.log(response);
-}).catch((error) => {
-    console.log(error);
-});
+await smithers.job(name);
 ```
 
 #### build(name, [config])
 Triggers a build for the specific job
 ```javascript
-smithers.build(name).then((response) => {
-    console.log(response);
-}).catch((error) => {
-    console.log(error);
-});
+await smithers.build(name);
 ```
 
 #### lastBuild(name, [config])
 Retrieves all data from the latest build of a specifc job
 ```javascript
-smithers.lastBuild(name).then((response) => {
-    console.log(response);
-}).catch((error) => {
-    console.log(error);
-});
+await smithers.lastBuild(name);
 ```
 
 #### lastSuccessfulBuild(name, [config])
 Retrieves all data from the latest successful build of a specifc job
 ```javascript
-smithers.lastSuccessfulBuild(name).then((response) => {
-    console.log(response);
-}).catch((error) => {
-    console.log(error);
-});
+await smithers.lastSuccessfulBuild(name);
 ```
 
 #### lastStableBuild(name, [config])
 Retrieves all data from the latest stable build of a specifc job
 ```javascript
-smithers.lastStableBuild(name).then((response) => {
-    console.log(response);
-}).catch((error) => {
-    console.log(error);
-});
+await smithers.lastStableBuild(name);
 ```
 
 #### lastUnsuccessfulBuild(name, [config])
 Retrieves all data from the latest unsuccessful build of a specifc job
 ```javascript
-smithers.lastUnsuccessfulBuild(name).then((response) => {
-    console.log(response);
-}).catch((error) => {
-    console.log(error);
-});
+await smithers.lastUnsuccessfulBuild(name);
 ```
 
 #### specificBuild(name, buildNumber, [config])
 Retrieves all data for a specific build of a specifc job
 ```javascript
-smithers.specificBuild(name, buildNumber).then((response) => {
-    console.log(response);
-}).catch((error) => {
-    console.log(error);
-});
+await smithers.specificBuild(name, buildNumber);
 ```
 
 #### configXML(name, [config])
 Retrieves the XML config of a specifc job
 ```javascript
-smithers.configXML(name).then((response) => {
-    console.log(response);
-}).catch((error) => {
-    console.log(error);
-});
+await smithers.configXML(name);
 ```
 
 #### overallLoad([config])
 Retrieves statistics of the entire system (busy executors, queue length, etc...)
 ```javascript
-smithers.overallLoad().then((response) => {
-    console.log(response);
-}).catch((error) => {
-    console.log(error);
-});
+await smithers.overallLoad();
 ```
 
 #### queue([config])
 Retrieves all data about the current queue
 ```javascript
-smithers.queue().then((response) => {
-    console.log(response);
-}).catch((error) => {
-    console.log(error);
-});
+await smithers.queue();
 ```
