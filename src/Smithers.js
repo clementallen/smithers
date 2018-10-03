@@ -1,33 +1,13 @@
-import asyncWrapper from './utils/asyncWrapper';
 import throwIfMissing from './utils/throwIfMissing';
-import crumbIssuer from './utils/crumbIssuer';
 import createPath from './utils/createPath';
 import paths from './utils/paths';
 import Caller from './Caller';
 
 class Smithers {
-    constructor(url, config) {
+    constructor(url, config = {}) {
         this.url = url;
-        this.config = config || {};
-
-        if (this.config.crumbIssuer) {
-            this.config.headers = this.config.headers || {};
-            this.init = new Promise((resolve, reject) => {
-                crumbIssuer(this.url, this.config)
-                    .then((crumbResponse) => {
-                        const { crumb, crumbRequestField } = crumbResponse;
-                        this.config.headers[crumbRequestField] = crumb;
-                        this.caller = new Caller(this.url, this.config);
-                        resolve();
-                    })
-                    .catch((error) => {
-                        reject(error);
-                    });
-            });
-        } else {
-            this.init = Promise.resolve();
-            this.caller = new Caller(this.url, this.config);
-        }
+        this.config = config;
+        this.caller = new Caller(this.url, this.config);
     }
 
     getInfo(config) {
@@ -120,6 +100,7 @@ class Smithers {
     getWhoAmI(config) {
         return this.caller.get(paths.getWhoAmI, config);
     }
+
 }
 
-export default asyncWrapper(Smithers);
+export default Smithers;
