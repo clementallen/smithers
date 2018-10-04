@@ -84,6 +84,11 @@ class Smithers {
     getQueue(config) {
         return this.caller.get(paths.getQueue, config);
     }
+
+    getView(view = 'All', config) {
+        const requestUrl = createPath(paths.getView, { view });
+        return this.caller.get(requestUrl, config);
+    }
 }
 
 export default asyncWrapper(Smithers);
