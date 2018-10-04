@@ -45,8 +45,8 @@ const smithers = new Smithers('https://jenkinsurl.com', {
 ### Configuration
 Configuration can be either passed when Smithers is instantiated or when a method is called.  The configuration is forwarded to the `axios` calls so look at the [axios documentation](https://github.com/mzabriskie/axios#request-config) to see the different options.
 
-- **crumbIssuer** *(Boolean, default: false)*: Enables CSRF crumb support for post requests
-- **timeout** *(Int, default: 5000)*: Request timeout in milliseconds
+- **crumbIssuer** `Boolean` `default=false`: Enables CSRF crumb support for post requests
+- **timeout** `Number` `default=5000`: Request timeout in milliseconds
 
 
 ### Methods
@@ -77,6 +77,16 @@ await smithers.getJobInfo(jobName, [config]);
 Triggers a build for the specific job
 ```javascript
 await smithers.startBuild(jobName, [config]);
+```
+
+#### stopBuild()
+* **jobName** `String` **required**
+* **buildNumber** `Number` **required**
+* **config** `Object` optional
+
+Stops the build of a specifc job
+```javascript
+await smithers.stopBuild(jobName, buildNumber, [config]);
 ```
 
 #### getLastBuild()
@@ -131,7 +141,7 @@ await smithers.getLastFailedBuild(jobName, [config]);
 
 Retrieves all data for a specific build of a specifc job
 ```javascript
-await smithers.getSpecificBuild(name, buildNumber, [config]);
+await smithers.getSpecificBuild(jobName, buildNumber, [config]);
 ```
 
 #### getConfigXML()

@@ -2,6 +2,7 @@ export default {
     getInfo: '/api/json',
     getJobInfo: '/job/{name}/api/json',
     startBuild: '/job/{name}/build',
+    stopBuild: '/job/{name}/{buildNumber}/stop',
     getLastBuild: '/job/{name}/lastBuild/api/json',
     getLastSuccessfulBuild: '/job/{name}/lastSuccessfulBuild/api/json',
     getLastStableBuild: '/job/{name}/lastStableBuild/api/json',
