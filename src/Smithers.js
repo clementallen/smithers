@@ -28,61 +28,61 @@ class Smithers {
         }
     }
 
-    info(config) {
-        return this.caller.get(paths.info, config);
+    getInfo(config) {
+        return this.caller.get(paths.getInfo, config);
     }
 
-    job(name = throwIfMissing('name'), config) {
-        const requestUrl = createPath(paths.job, { name });
+    getJobInfo(name = throwIfMissing('name'), config) {
+        const requestUrl = createPath(paths.getJobInfo, { name });
         return this.caller.get(requestUrl, config);
     }
 
-    build(name = throwIfMissing('name'), config) {
-        const requestUrl = createPath(paths.build, { name });
+    startBuild(name = throwIfMissing('name'), config) {
+        const requestUrl = createPath(paths.startBuild, { name });
         return this.caller.post(requestUrl, config);
     }
 
-    lastBuild(name = throwIfMissing('name'), config) {
-        const requestUrl = createPath(paths.lastBuild, { name });
+    getLastBuild(name = throwIfMissing('name'), config) {
+        const requestUrl = createPath(paths.getLastBuild, { name });
         return this.caller.get(requestUrl, config);
     }
 
-    lastSuccessfulBuild(name = throwIfMissing('name'), config) {
-        const requestUrl = createPath(paths.lastSuccessfulBuild, { name });
+    getLastSuccessfulBuild(name = throwIfMissing('name'), config) {
+        const requestUrl = createPath(paths.getLastSuccessfulBuild, { name });
         return this.caller.get(requestUrl, config);
     }
 
-    lastStableBuild(name = throwIfMissing('name'), config) {
-        const requestUrl = createPath(paths.lastStableBuild, { name });
+    getLastStableBuild(name = throwIfMissing('name'), config) {
+        const requestUrl = createPath(paths.getLastStableBuild, { name });
         return this.caller.get(requestUrl, config);
     }
 
-    lastUnsuccessfulBuild(name = throwIfMissing('name'), config) {
-        const requestUrl = createPath(paths.lastUnsuccessfulBuild, { name });
+    getLastUnsuccessfulBuild(name = throwIfMissing('name'), config) {
+        const requestUrl = createPath(paths.getLastUnsuccessfulBuild, { name });
         return this.caller.get(requestUrl, config);
     }
 
-    lastFailedBuild(name = throwIfMissing('name'), config) {
-        const requestUrl = createPath(paths.lastFailedBuild, { name });
+    getLastFailedBuild(name = throwIfMissing('name'), config) {
+        const requestUrl = createPath(paths.getLastFailedBuild, { name });
         return this.caller.get(requestUrl, config);
     }
 
-    specificBuild(name = throwIfMissing('name'), buildNumber = throwIfMissing('buildNumber'), config) {
-        const requestUrl = createPath(paths.specificBuild, { name, buildNumber });
+    getSpecificBuild(name = throwIfMissing('name'), buildNumber = throwIfMissing('buildNumber'), config) {
+        const requestUrl = createPath(paths.getSpecificBuild, { name, buildNumber });
         return this.caller.get(requestUrl, config);
     }
 
-    configXML(name = throwIfMissing('name'), config) {
-        const requestUrl = createPath(paths.configXML, { name });
+    getConfigXML(name = throwIfMissing('name'), config) {
+        const requestUrl = createPath(paths.getConfigXML, { name });
         return this.caller.get(requestUrl, config);
     }
 
-    overallLoad(config) {
-        return this.caller.get(paths.overallLoad, config);
+    getOverallLoad(config) {
+        return this.caller.get(paths.getOverallLoad, config);
     }
 
-    queue(config) {
-        return this.caller.get(paths.queue, config);
+    getQueue(config) {
+        return this.caller.get(paths.getQueue, config);
     }
 }
 
