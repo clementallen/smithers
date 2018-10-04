@@ -304,4 +304,28 @@ describe('Smithers', () => {
             expect(callerGetStub).to.be.calledWithExactly('/queue/api/json', mockConfig);
         });
     });
+
+    describe('getView', () => {
+        it('should resolve with Caller response', () => {
+            callerGetStub.resolves(mockResponse);
+            return expect(smithers.getView('viewName')).to.eventually.eql(mockResponse);
+        });
+
+        it('should reject with Caller error', () => {
+            callerGetStub.rejects(mockError);
+            return expect(smithers.getView('viewName')).to.be.rejectedWith(mockError.message);
+        });
+
+        it('should call Caller.get with the expected parameters', async () => {
+            callerGetStub.resolves(mockResponse);
+            await smithers.getView('viewName', mockConfig);
+            expect(callerGetStub).to.be.calledWithExactly('/view/viewName/api/json', mockConfig);
+        });
+
+        it('should call Caller.get with the default view name if none provided', async () => {
+            callerGetStub.resolves(mockResponse);
+            await smithers.getView();
+            expect(callerGetStub).to.be.calledWithExactly('/view/All/api/json', undefined);
+        });
+    });
 });

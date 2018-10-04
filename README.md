@@ -53,74 +53,117 @@ Configuration can be either passed when Smithers is instantiated or when a metho
 
 *Note: These examples are using `async/await` but work perfectly with `.then` and `.catch` as well*
 
-#### getInfo([config])
+#### getInfo()
+* **config** `Object` optional
+
 Retrieves all data from the `/api/json` endpoint.
 ```javascript
-await smithers.getInfo();
+await smithers.getInfo([config]);
 ```
 
-#### getJobInfo(name, [config])
+#### getJobInfo()
+* **jobName** `String` **required**
+* **config** `Object` optional
+
 Retrieves all data from a specific job
 ```javascript
-await smithers.getJobInfo(name);
+await smithers.getJobInfo(jobName, [config]);
 ```
 
-#### startBuild(name, [config])
+#### startBuild()
+* **jobName** `String` **required**
+* **config** `Object` optional
+
 Triggers a build for the specific job
 ```javascript
-await smithers.startBuild(name);
+await smithers.startBuild(jobName, [config]);
 ```
 
-#### getLastBuild(name, [config])
+#### getLastBuild()
+* **jobName** `String` **required**
+* **config** `Object` optional
+
 Retrieves all data from the latest build of a specifc job
 ```javascript
-await smithers.getLastBuild(name);
+await smithers.getLastBuild(jobName, [config]);
 ```
 
-#### getLastSuccessfulBuild(name, [config])
+#### getLastSuccessfulBuild()
+* **jobName** `String` **required**
+* **config** `Object` optional
+
 Retrieves all data from the latest successful build of a specifc job
 ```javascript
-await smithers.getLastSuccessfulBuild(name);
+await smithers.getLastSuccessfulBuild(jobName, [config]);
 ```
 
-#### getLastStableBuild(name, [config])
+#### getLastStableBuild()
+* **jobName** `String` **required**
+* **config** `Object` optional
+
 Retrieves all data from the latest stable build of a specifc job
 ```javascript
-await smithers.getLastStableBuild(name);
+await smithers.getLastStableBuild(jobName, [config]);
 ```
 
-#### getLastUnsuccessfulBuild(name, [config])
+#### getLastUnsuccessfulBuild()
+* **jobName** `String` **required**
+* **config** `Object` optional
+
 Retrieves all data from the latest unsuccessful build of a specifc job
 ```javascript
-await smithers.getLastUnsuccessfulBuild(name);
+await smithers.getLastUnsuccessfulBuild(jobName, [config]);
 ```
 
-#### getLastFailedBuild(name, [config])
+#### getLastFailedBuild()
+* **jobName** `String` **required**
+* **config** `Object` optional
+
 Retrieves all data from the latest unsuccessful build of a specifc job
 ```javascript
-await smithers.getLastFailedBuild(name);
+await smithers.getLastFailedBuild(jobName, [config]);
 ```
 
-#### getSpecificBuild(name, buildNumber, [config])
+#### getSpecificBuild()
+* **jobName** `String` **required**
+* **buildNumber** `Number` **required**
+* **config** `Object` optional
+
 Retrieves all data for a specific build of a specifc job
 ```javascript
-await smithers.getSpecificBuild(name, buildNumber);
+await smithers.getSpecificBuild(name, buildNumber, [config]);
 ```
 
-#### getConfigXML(name, [config])
+#### getConfigXML()
+* **jobName** `String` **required**
+* **config** `Object` optional
+
 Retrieves the XML config of a specifc job
 ```javascript
-await smithers.getConfigXML(name);
+await smithers.getConfigXML(jobName, [config]);
 ```
 
-#### getOverallLoad([config])
+#### getOverallLoad()
+* **config** `Object` optional
+
 Retrieves statistics of the entire system (busy executors, queue length, etc...)
 ```javascript
-await smithers.getOverallLoad();
+await smithers.getOverallLoad([config]);
 ```
 
-#### getQueue([config])
+#### getQueue()
+* **config** `Object` optional
+
 Retrieves all data about the current queue
 ```javascript
-await smithers.getQueue();
+await smithers.getQueue([config]);
+```
+
+#### getView()
+* **viewName** `String` `default='All'` optional
+* **config** `Object` optional
+
+Retrieves all data about a specific view or the default view of 'All'
+```javascript
+await smithers.getView(viewName, [config]);
 ```

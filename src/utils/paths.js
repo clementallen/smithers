@@ -11,5 +11,6 @@ export default {
     getConfigXML: '/job/{name}/config.xml',
     getOverallLoad: '/overallLoad/api/json',
     getQueue: '/queue/api/json',
+    getView: '/view/{view}/api/json',
     crumbIssuer: '/crumbIssuer/api/json'
 };
