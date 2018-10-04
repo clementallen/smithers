@@ -10,6 +10,8 @@ Async Jenkins API client for browsers and node
 [![Black Duck Security Risk](https://copilot.blackducksoftware.com/github/repos/clementallen/smithers/branches/master/badge-risk.svg)](https://copilot.blackducksoftware.com/github/repos/clementallen/smithers/branches/master)
 [![Greenkeeper badge](https://badges.greenkeeper.io/clementallen/smithers.svg)](https://greenkeeper.io/)
 
+### **Note:** This package is under active development and while the version is less than 1.x.x all releases should be treated as containing breaking changes.
+
 ## Install
 
 ```bash
@@ -27,28 +29,16 @@ import Smithers from 'smithers';
 const smithers = new Smithers('https://jenkinsurl.com', config);
 ```
 
-#### Username & password auth (config.auth required)
+#### Username & password/token auth (config.auth required)
 ```javascript
 import Smithers from 'smithers';
 
 const smithers = new Smithers('https://jenkinsurl.com', {
     auth: {
         username: 'username',
-        password: 'password'
+        password: 'password/token'
     }
 });
-```
-
-#### Username & token auth (config.auth required)
-```javascript
-import Smithers from 'smithers';
-
-const smithers = new Smithers('https://jenkinsurl.com', {
-    auth: {
-        username: 'username',
-        password: 'token'
-    }
-);
 ```
 
 
@@ -63,68 +53,74 @@ Configuration can be either passed when Smithers is instantiated or when a metho
 
 *Note: These examples are using `async/await` but work perfectly with `.then` and `.catch` as well*
 
-#### info([config])
+#### getInfo([config])
 Retrieves all data from the `/api/json` endpoint.
 ```javascript
-await smithers.info();
+await smithers.getInfo();
 ```
 
-#### job(name, [config])
+#### getJobInfo(name, [config])
 Retrieves all data from a specific job
 ```javascript
-await smithers.job(name);
+await smithers.getJobInfo(name);
 ```
 
-#### build(name, [config])
+#### startBuild(name, [config])
 Triggers a build for the specific job
 ```javascript
-await smithers.build(name);
+await smithers.startBuild(name);
 ```
 
-#### lastBuild(name, [config])
+#### getLastBuild(name, [config])
 Retrieves all data from the latest build of a specifc job
 ```javascript
-await smithers.lastBuild(name);
+await smithers.getLastBuild(name);
 ```
 
-#### lastSuccessfulBuild(name, [config])
+#### getLastSuccessfulBuild(name, [config])
 Retrieves all data from the latest successful build of a specifc job
 ```javascript
-await smithers.lastSuccessfulBuild(name);
+await smithers.getLastSuccessfulBuild(name);
 ```
 
-#### lastStableBuild(name, [config])
+#### getLastStableBuild(name, [config])
 Retrieves all data from the latest stable build of a specifc job
 ```javascript
-await smithers.lastStableBuild(name);
+await smithers.getLastStableBuild(name);
 ```
 
-#### lastUnsuccessfulBuild(name, [config])
+#### getLastUnsuccessfulBuild(name, [config])
 Retrieves all data from the latest unsuccessful build of a specifc job
 ```javascript
-await smithers.lastUnsuccessfulBuild(name);
+await smithers.getLastUnsuccessfulBuild(name);
 ```
 
-#### specificBuild(name, buildNumber, [config])
+#### getLastFailedBuild(name, [config])
+Retrieves all data from the latest unsuccessful build of a specifc job
+```javascript
+await smithers.getLastFailedBuild(name);
+```
+
+#### getSpecificBuild(name, buildNumber, [config])
 Retrieves all data for a specific build of a specifc job
 ```javascript
-await smithers.specificBuild(name, buildNumber);
+await smithers.getSpecificBuild(name, buildNumber);
 ```
 
-#### configXML(name, [config])
+#### getConfigXML(name, [config])
 Retrieves the XML config of a specifc job
 ```javascript
-await smithers.configXML(name);
+await smithers.getConfigXML(name);
 ```
 
-#### overallLoad([config])
+#### getOverallLoad([config])
 Retrieves statistics of the entire system (busy executors, queue length, etc...)
 ```javascript
-await smithers.overallLoad();
+await smithers.getOverallLoad();
 ```
 
-#### queue([config])
+#### getQueue([config])
 Retrieves all data about the current queue
 ```javascript
-await smithers.queue();
+await smithers.getQueue();
 ```
