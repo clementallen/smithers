@@ -89,6 +89,22 @@ class Smithers {
         const requestUrl = createPath(paths.getView, { view });
         return this.caller.get(requestUrl, config);
     }
+
+    restart(config) {
+        return this.caller.post(paths.restart, config);
+    }
+
+    safeRestart(config) {
+        return this.caller.post(paths.safeRestart, config);
+    }
+
+    startQuietDown(config) {
+        return this.caller.post(paths.startQuietDown, config);
+    }
+
+    stopQuietDown(config) {
+        return this.caller.post(paths.stopQuietDown, config);
+    }
 }
 
 export default asyncWrapper(Smithers);

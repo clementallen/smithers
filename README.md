@@ -167,3 +167,35 @@ Retrieves all data about a specific view or the default view of 'All'
 ```javascript
 await smithers.getView(viewName, [config]);
 ```
+
+#### restart()
+* **config** `Object` optional
+
+Restarts Jenkins
+```javascript
+await smithers.restart([config]);
+```
+
+#### safeRestart()
+* **config** `Object` optional
+
+Restarts Jenkins once no jobs are running
+```javascript
+await smithers.safeRestart([config]);
+```
+
+#### startQuietDown()
+* **config** `Object` optional
+
+Starts "quiet down" mode
+```javascript
+await smithers.startQuietDown([config]);
+```
+
+#### stopQuietDown()
+* **config** `Object` optional
+
+Stops "quiet down" mode
+```javascript
+await smithers.stopQuietDown([config]);
+```

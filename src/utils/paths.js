@@ -12,5 +12,9 @@ export default {
     getOverallLoad: '/overallLoad/api/json',
     getQueue: '/queue/api/json',
     getView: '/view/{view}/api/json',
+    restart: '/restart',
+    safeRestart: '/safeRestart',
+    startQuietDown: '/quietDown',
+    stopQuietDown: '/cancelQuietDown',
     crumbIssuer: '/crumbIssuer/api/json'
 };
