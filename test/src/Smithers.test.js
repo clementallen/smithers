@@ -328,4 +328,76 @@ describe('Smithers', () => {
             expect(callerGetStub).to.be.calledWithExactly('/view/All/api/json', undefined);
         });
     });
+
+    describe('restart', () => {
+        it('should resolve with Caller response', () => {
+            callerPostStub.resolves(mockResponse);
+            return expect(smithers.restart()).to.eventually.eql(mockResponse);
+        });
+
+        it('should reject with Caller error', () => {
+            callerPostStub.rejects(mockError);
+            return expect(smithers.restart()).to.be.rejectedWith(mockError.message);
+        });
+
+        it('should call Caller.get with the expected parameters', async () => {
+            callerPostStub.resolves(mockResponse);
+            await smithers.restart(mockConfig);
+            expect(callerPostStub).to.be.calledWithExactly('/restart', mockConfig);
+        });
+    });
+
+    describe('safeRestart', () => {
+        it('should resolve with Caller response', () => {
+            callerPostStub.resolves(mockResponse);
+            return expect(smithers.safeRestart()).to.eventually.eql(mockResponse);
+        });
+
+        it('should reject with Caller error', () => {
+            callerPostStub.rejects(mockError);
+            return expect(smithers.safeRestart()).to.be.rejectedWith(mockError.message);
+        });
+
+        it('should call Caller.get with the expected parameters', async () => {
+            callerPostStub.resolves(mockResponse);
+            await smithers.safeRestart(mockConfig);
+            expect(callerPostStub).to.be.calledWithExactly('/safeRestart', mockConfig);
+        });
+    });
+
+    describe('startQuietDown', () => {
+        it('should resolve with Caller response', () => {
+            callerPostStub.resolves(mockResponse);
+            return expect(smithers.startQuietDown()).to.eventually.eql(mockResponse);
+        });
+
+        it('should reject with Caller error', () => {
+            callerPostStub.rejects(mockError);
+            return expect(smithers.startQuietDown()).to.be.rejectedWith(mockError.message);
+        });
+
+        it('should call Caller.get with the expected parameters', async () => {
+            callerPostStub.resolves(mockResponse);
+            await smithers.startQuietDown(mockConfig);
+            expect(callerPostStub).to.be.calledWithExactly('/quietDown', mockConfig);
+        });
+    });
+
+    describe('stopQuietDown', () => {
+        it('should resolve with Caller response', () => {
+            callerPostStub.resolves(mockResponse);
+            return expect(smithers.stopQuietDown()).to.eventually.eql(mockResponse);
+        });
+
+        it('should reject with Caller error', () => {
+            callerPostStub.rejects(mockError);
+            return expect(smithers.stopQuietDown()).to.be.rejectedWith(mockError.message);
+        });
+
+        it('should call Caller.get with the expected parameters', async () => {
+            callerPostStub.resolves(mockResponse);
+            await smithers.stopQuietDown(mockConfig);
+            expect(callerPostStub).to.be.calledWithExactly('/cancelQuietDown', mockConfig);
+        });
+    });
 });
