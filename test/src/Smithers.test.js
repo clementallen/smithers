@@ -125,6 +125,30 @@ describe('Smithers', () => {
         it('should throw an error if the name parameter is not provided', () => expect(smithers.startBuild()).to.be.rejectedWith('Missing parameter: name'));
     });
 
+    describe('stopBuild', () => {
+        const buildNumber = 100;
+
+        it('should resolve with Caller response', () => {
+            callerPostStub.resolves(mockResponse);
+            return expect(smithers.stopBuild('jobName', buildNumber)).to.eventually.eql(mockResponse);
+        });
+
+        it('should reject with Caller error', () => {
+            callerPostStub.rejects(mockError);
+            return expect(smithers.stopBuild('jobName', buildNumber)).to.be.rejectedWith(mockError.message);
+        });
+
+        it('should call Caller.get with the expected parameters', async () => {
+            callerPostStub.resolves(mockResponse);
+            await smithers.stopBuild('jobName', buildNumber, mockConfig);
+            expect(callerPostStub).to.be.calledWithExactly('/job/jobName/100/stop', mockConfig);
+        });
+
+        it('should throw an error if the name parameter is not provided', () => expect(smithers.stopBuild()).to.be.rejectedWith('Missing parameter: name'));
+
+        it('should throw an error if the buildNumber parameter is not provided', () => expect(smithers.stopBuild('jobName')).to.be.rejectedWith('Missing parameter: buildNumber'));
+    });
+
     describe('getLastBuild', () => {
         it('should resolve with Caller response', () => {
             callerGetStub.resolves(mockResponse);
@@ -246,7 +270,7 @@ describe('Smithers', () => {
 
         it('should throw an error if the name parameter is not provided', () => expect(smithers.getSpecificBuild()).to.be.rejectedWith('Missing parameter: name'));
 
-        it('should throw an error if the name parameter is not provided', () => expect(smithers.getSpecificBuild('jobName')).to.be.rejectedWith('Missing parameter: buildNumber'));
+        it('should throw an error if the buildNumber parameter is not provided', () => expect(smithers.getSpecificBuild('jobName')).to.be.rejectedWith('Missing parameter: buildNumber'));
     });
 
     describe('getConfigXML', () => {
