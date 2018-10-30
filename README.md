@@ -9,6 +9,7 @@ Async Jenkins API client for browsers and node
 [![devDependencies Status](https://david-dm.org/clementallen/smithers/dev-status.svg)](https://david-dm.org/clementallen/smithers?type=dev)
 [![Black Duck Security Risk](https://copilot.blackducksoftware.com/github/repos/clementallen/smithers/branches/master/badge-risk.svg)](https://copilot.blackducksoftware.com/github/repos/clementallen/smithers/branches/master)
 [![Greenkeeper badge](https://badges.greenkeeper.io/clementallen/smithers.svg)](https://greenkeeper.io/)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fclementallen%2Fsmithers.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fclementallen%2Fsmithers?ref=badge_shield)
 
 ### **Note:** This package is under active development and while the version is less than 1.x.x all releases should be treated as containing breaking changes.
 
@@ -209,3 +210,7 @@ Stops "quiet down" mode
 ```javascript
 await smithers.stopQuietDown([config]);
 ```
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fclementallen%2Fsmithers.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fclementallen%2Fsmithers?ref=badge_large)
