@@ -17,5 +17,6 @@ export default {
     safeRestart: '/safeRestart',
     startQuietDown: '/quietDown',
     stopQuietDown: '/cancelQuietDown',
+    getWhoAmI: '/whoAmI/api/json',
     crumbIssuer: '/crumbIssuer/api/json'
 };
