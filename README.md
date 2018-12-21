@@ -208,3 +208,11 @@ Stops "quiet down" mode
 ```javascript
 await smithers.stopQuietDown([config]);
 ```
+
+#### getWhoAmI()
+* **config** `Object` optional
+
+Retrieves user details
+```javascript
+await smithers.getWhoAmI([config]);
+```
