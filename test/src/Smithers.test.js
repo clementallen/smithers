@@ -424,4 +424,22 @@ describe('Smithers', () => {
             expect(callerPostStub).to.be.calledWithExactly('/cancelQuietDown', mockConfig);
         });
     });
+
+    describe('getWhoAmI', () => {
+        it('should resolve with Caller response', () => {
+            callerGetStub.resolves(mockResponse);
+            return expect(smithers.getWhoAmI()).to.eventually.eql(mockResponse);
+        });
+
+        it('should reject with Caller error', () => {
+            callerGetStub.rejects(mockError);
+            return expect(smithers.getWhoAmI()).to.be.rejectedWith(mockError.message);
+        });
+
+        it('should call Caller.get with the expected parameters', async () => {
+            callerGetStub.resolves(mockResponse);
+            await smithers.getWhoAmI(mockConfig);
+            expect(callerGetStub).to.be.calledWithExactly('/whoAmI/api/json', mockConfig);
+        });
+    });
 });
