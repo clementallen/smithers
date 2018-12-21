@@ -110,6 +110,10 @@ class Smithers {
     stopQuietDown(config) {
         return this.caller.post(paths.stopQuietDown, config);
     }
+
+    getWhoAmI(config) {
+        return this.caller.get(paths.getWhoAmI, config);
+    }
 }
 
 export default asyncWrapper(Smithers);
