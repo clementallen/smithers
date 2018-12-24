@@ -6,6 +6,7 @@ export default class Caller {
     constructor(url, config = {}) {
         this.url = url;
         this.crumb = null;
+        this.crumbPending = null;
         this.config = {
             ...config,
             timeout: config.timeout || 5000,
@@ -22,15 +23,16 @@ export default class Caller {
     }
 
     async call(method, path, config) {
-        console.log('### CONFIG', this.config);
-        console.log('### PREQUEST CRUMB', this.crumb);
+        if (this.crumbPending) await this.crumbPending;
         if (this.config.crumbIssuer && !this.crumb) {
             try {
-                console.log('### ISSUING CRUMB');
-                this.crumb = await crumbIssuer(this.url, this.config);
-                console.log('### THIS CRUMB', this.crumb);
-                this.config.headers = this.config.headers || {};
-                this.config.headers[this.crumb.crumbRequestField] = this.crumb.crumb;
+                this.crumbPending = new Promise(async (resolve) => {
+                    this.crumb = await crumbIssuer(this.url, this.config);
+                    this.config.headers = this.config.headers || {};
+                    this.config.headers[this.crumb.crumbRequestField] = this.crumb.crumb;
+                    resolve();
+                });
+                await this.crumbPending;
             } catch (e) {
                 throw e;
             }
@@ -42,8 +44,6 @@ export default class Caller {
             method,
             url
         };
-
-        console.log(requestConfig);
 
         try {
             const response = await axios(requestConfig);

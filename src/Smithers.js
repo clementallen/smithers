@@ -100,7 +100,6 @@ class Smithers {
     getWhoAmI(config) {
         return this.caller.get(paths.getWhoAmI, config);
     }
-
 }
 
 export default Smithers;

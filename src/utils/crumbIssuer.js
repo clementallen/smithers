@@ -5,9 +5,8 @@ import formatError from './formatError';
 export default async (url, config) => {
     const requestUrl = `${url}${paths.crumbIssuer}`;
     try {
-        const response = await axios.get(requestUrl, config);
-        console.log('### RES', response.data);
-        return response.data;
+        const { data } = await axios.get(requestUrl, config);
+        return data;
     } catch (error) {
         throw formatError(error);
     }
