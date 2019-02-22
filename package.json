@@ -5,7 +5,7 @@
   "main": "./lib/index.js",
   "scripts": {
     "build": "babel -d lib src",
-    "test": "nyc mocha --exit",
+    "test": "nyc mocha ./test/**/*.test.js --require @babel/register --require @babel/polyfill --require ./test/base",
     "cover": "nyc --reporter=lcov npm test",
     "lint": "eslint \"./{src,test}/**/*.js\"",
     "changelog": "auto-changelog -p --tag-prefix v",

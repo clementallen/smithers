@@ -1,10 +1,10 @@
-export default (error) => {
+export default ({ response, message }) => {
     let formattedMessage;
-    if (error.response) {
-        const { statusText, status } = error.response;
+    if (response) {
+        const { statusText, status } = response;
         formattedMessage = `${status} | ${statusText}`;
     } else {
-        formattedMessage = error.message;
+        formattedMessage = message;
     }
     return new Error(formattedMessage);
 };
