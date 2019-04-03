@@ -5,21 +5,14 @@
         "node": true,
         "mocha": true
     },
-    "plugins": [
-        "chai-friendly"
-    ],
+    "plugins": ["chai-friendly"],
     "globals": {
         "expect": true,
         "sinon": true
     },
     "rules": {
-        "indent": [
-            2, 4
-        ],
-        "comma-dangle": [
-            2,
-            "never"
-        ],
+        "indent": [2, 4],
+        "comma-dangle": [2, "never"],
         "no-unused-expressions": 0,
         "chai-friendly/no-unused-expressions": 2
     }

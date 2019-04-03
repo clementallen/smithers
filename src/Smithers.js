@@ -13,14 +13,16 @@ class Smithers {
         if (this.config.crumbIssuer) {
             this.config.headers = this.config.headers || {};
             this.init = new Promise((resolve, reject) => {
-                crumbIssuer(this.url, this.config).then((crumbResponse) => {
-                    const { crumb, crumbRequestField } = crumbResponse;
-                    this.config.headers[crumbRequestField] = crumb;
-                    this.caller = new Caller(this.url, this.config);
-                    resolve();
-                }).catch((error) => {
-                    reject(error);
-                });
+                crumbIssuer(this.url, this.config)
+                    .then((crumbResponse) => {
+                        const { crumb, crumbRequestField } = crumbResponse;
+                        this.config.headers[crumbRequestField] = crumb;
+                        this.caller = new Caller(this.url, this.config);
+                        resolve();
+                    })
+                    .catch((error) => {
+                        reject(error);
+                    });
             });
         } else {
             this.init = Promise.resolve();
@@ -72,7 +74,11 @@ class Smithers {
         return this.caller.get(requestUrl, config);
     }
 
-    getSpecificBuild(name = throwIfMissing('name'), buildNumber = throwIfMissing('buildNumber'), config) {
+    getSpecificBuild(
+        name = throwIfMissing('name'),
+        buildNumber = throwIfMissing('buildNumber'),
+        config
+    ) {
         const requestUrl = createPath(paths.getSpecificBuild, { name, buildNumber });
         return this.caller.get(requestUrl, config);
     }

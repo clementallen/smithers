@@ -66,11 +66,12 @@ describe('Caller', () => {
         });
 
         it('should call axios with the individual config if provided', async () => {
-            const newMockConfig = Object.assign({}, mockConfig, {
+            const newMockConfig = {
+                ...mockConfig,
                 params: {
                     tree: 'tree'
                 }
-            });
+            };
             axiosStub.resolves(mockResponse);
             await caller.get(mockPath, newMockConfig);
             expect(axiosStub).to.be.calledWithExactly({
@@ -128,11 +129,12 @@ describe('Caller', () => {
         });
 
         it('should call axios with the individual config if provided', async () => {
-            const newMockConfig = Object.assign({}, mockConfig, {
+            const newMockConfig = {
+                ...mockConfig,
                 params: {
                     tree: 'tree'
                 }
-            });
+            };
             axiosStub.resolves(mockResponse);
             await caller.post(mockPath, newMockConfig);
             expect(axiosStub).to.be.calledWithExactly({

@@ -130,12 +130,16 @@ describe('Smithers', () => {
 
         it('should resolve with Caller response', () => {
             callerPostStub.resolves(mockResponse);
-            return expect(smithers.stopBuild('jobName', buildNumber)).to.eventually.eql(mockResponse);
+            return expect(smithers.stopBuild('jobName', buildNumber)).to.eventually.eql(
+                mockResponse
+            );
         });
 
         it('should reject with Caller error', () => {
             callerPostStub.rejects(mockError);
-            return expect(smithers.stopBuild('jobName', buildNumber)).to.be.rejectedWith(mockError.message);
+            return expect(smithers.stopBuild('jobName', buildNumber)).to.be.rejectedWith(
+                mockError.message
+            );
         });
 
         it('should call Caller.get with the expected parameters', async () => {
@@ -146,7 +150,9 @@ describe('Smithers', () => {
 
         it('should throw an error if the name parameter is not provided', () => expect(smithers.stopBuild()).to.be.rejectedWith('Missing parameter: name'));
 
-        it('should throw an error if the buildNumber parameter is not provided', () => expect(smithers.stopBuild('jobName')).to.be.rejectedWith('Missing parameter: buildNumber'));
+        it('should throw an error if the buildNumber parameter is not provided', () => expect(smithers.stopBuild('jobName')).to.be.rejectedWith(
+            'Missing parameter: buildNumber'
+        ));
     });
 
     describe('getLastBuild', () => {
@@ -163,7 +169,10 @@ describe('Smithers', () => {
         it('should call Caller.get with the expected parameters', async () => {
             callerGetStub.resolves(mockResponse);
             await smithers.getLastBuild('jobName', mockConfig);
-            expect(callerGetStub).to.be.calledWithExactly('/job/jobName/lastBuild/api/json', mockConfig);
+            expect(callerGetStub).to.be.calledWithExactly(
+                '/job/jobName/lastBuild/api/json',
+                mockConfig
+            );
         });
 
         it('should throw an error if the name parameter is not provided', () => expect(smithers.getLastBuild()).to.be.rejectedWith('Missing parameter: name'));
@@ -172,21 +181,30 @@ describe('Smithers', () => {
     describe('getLastSuccessfulBuild', () => {
         it('should resolve with Caller response', () => {
             callerGetStub.resolves(mockResponse);
-            return expect(smithers.getLastSuccessfulBuild('jobName')).to.eventually.eql(mockResponse);
+            return expect(smithers.getLastSuccessfulBuild('jobName')).to.eventually.eql(
+                mockResponse
+            );
         });
 
         it('should reject with Caller error', () => {
             callerGetStub.rejects(mockError);
-            return expect(smithers.getLastSuccessfulBuild('jobName')).to.be.rejectedWith(mockError.message);
+            return expect(smithers.getLastSuccessfulBuild('jobName')).to.be.rejectedWith(
+                mockError.message
+            );
         });
 
         it('should call Caller.get with the expected parameters', async () => {
             callerGetStub.resolves(mockResponse);
             await smithers.getLastSuccessfulBuild('jobName', mockConfig);
-            expect(callerGetStub).to.be.calledWithExactly('/job/jobName/lastSuccessfulBuild/api/json', mockConfig);
+            expect(callerGetStub).to.be.calledWithExactly(
+                '/job/jobName/lastSuccessfulBuild/api/json',
+                mockConfig
+            );
         });
 
-        it('should throw an error if the name parameter is not provided', () => expect(smithers.getLastSuccessfulBuild()).to.be.rejectedWith('Missing parameter: name'));
+        it('should throw an error if the name parameter is not provided', () => expect(smithers.getLastSuccessfulBuild()).to.be.rejectedWith(
+            'Missing parameter: name'
+        ));
     });
 
     describe('getLastStableBuild', () => {
@@ -197,13 +215,18 @@ describe('Smithers', () => {
 
         it('should reject with Caller error', () => {
             callerGetStub.rejects(mockError);
-            return expect(smithers.getLastStableBuild('jobName')).to.be.rejectedWith(mockError.message);
+            return expect(smithers.getLastStableBuild('jobName')).to.be.rejectedWith(
+                mockError.message
+            );
         });
 
         it('should call Caller.get with the expected parameters', async () => {
             callerGetStub.resolves(mockResponse);
             await smithers.getLastStableBuild('jobName', mockConfig);
-            expect(callerGetStub).to.be.calledWithExactly('/job/jobName/lastStableBuild/api/json', mockConfig);
+            expect(callerGetStub).to.be.calledWithExactly(
+                '/job/jobName/lastStableBuild/api/json',
+                mockConfig
+            );
         });
 
         it('should throw an error if the name parameter is not provided', () => expect(smithers.getLastStableBuild()).to.be.rejectedWith('Missing parameter: name'));
@@ -212,21 +235,30 @@ describe('Smithers', () => {
     describe('getLastUnsuccessfulBuild', () => {
         it('should resolve with Caller response', () => {
             callerGetStub.resolves(mockResponse);
-            return expect(smithers.getLastUnsuccessfulBuild('jobName')).to.eventually.eql(mockResponse);
+            return expect(smithers.getLastUnsuccessfulBuild('jobName')).to.eventually.eql(
+                mockResponse
+            );
         });
 
         it('should reject with Caller error', () => {
             callerGetStub.rejects(mockError);
-            return expect(smithers.getLastUnsuccessfulBuild('jobName')).to.be.rejectedWith(mockError.message);
+            return expect(smithers.getLastUnsuccessfulBuild('jobName')).to.be.rejectedWith(
+                mockError.message
+            );
         });
 
         it('should call Caller.get with the expected parameters', async () => {
             callerGetStub.resolves(mockResponse);
             await smithers.getLastUnsuccessfulBuild('jobName', mockConfig);
-            expect(callerGetStub).to.be.calledWithExactly('/job/jobName/lastUnsuccessfulBuild/api/json', mockConfig);
+            expect(callerGetStub).to.be.calledWithExactly(
+                '/job/jobName/lastUnsuccessfulBuild/api/json',
+                mockConfig
+            );
         });
 
-        it('should throw an error if the name parameter is not provided', () => expect(smithers.getLastUnsuccessfulBuild()).to.be.rejectedWith('Missing parameter: name'));
+        it('should throw an error if the name parameter is not provided', () => expect(smithers.getLastUnsuccessfulBuild()).to.be.rejectedWith(
+            'Missing parameter: name'
+        ));
     });
 
     describe('getLastFailedBuild', () => {
@@ -237,13 +269,18 @@ describe('Smithers', () => {
 
         it('should reject with Caller error', () => {
             callerGetStub.rejects(mockError);
-            return expect(smithers.getLastFailedBuild('jobName')).to.be.rejectedWith(mockError.message);
+            return expect(smithers.getLastFailedBuild('jobName')).to.be.rejectedWith(
+                mockError.message
+            );
         });
 
         it('should call Caller.get with the expected parameters', async () => {
             callerGetStub.resolves(mockResponse);
             await smithers.getLastFailedBuild('jobName', mockConfig);
-            expect(callerGetStub).to.be.calledWithExactly('/job/jobName/lastFailedBuild/api/json', mockConfig);
+            expect(callerGetStub).to.be.calledWithExactly(
+                '/job/jobName/lastFailedBuild/api/json',
+                mockConfig
+            );
         });
 
         it('should throw an error if the name parameter is not provided', () => expect(smithers.getLastFailedBuild()).to.be.rejectedWith('Missing parameter: name'));
@@ -254,12 +291,16 @@ describe('Smithers', () => {
 
         it('should resolve with Caller response', () => {
             callerGetStub.resolves(mockResponse);
-            return expect(smithers.getSpecificBuild('jobName', buildNumber)).to.eventually.eql(mockResponse);
+            return expect(smithers.getSpecificBuild('jobName', buildNumber)).to.eventually.eql(
+                mockResponse
+            );
         });
 
         it('should reject with Caller error', () => {
             callerGetStub.rejects(mockError);
-            return expect(smithers.getSpecificBuild('jobName', buildNumber)).to.be.rejectedWith(mockError.message);
+            return expect(smithers.getSpecificBuild('jobName', buildNumber)).to.be.rejectedWith(
+                mockError.message
+            );
         });
 
         it('should call Caller.get with the expected parameters', async () => {
@@ -270,7 +311,9 @@ describe('Smithers', () => {
 
         it('should throw an error if the name parameter is not provided', () => expect(smithers.getSpecificBuild()).to.be.rejectedWith('Missing parameter: name'));
 
-        it('should throw an error if the buildNumber parameter is not provided', () => expect(smithers.getSpecificBuild('jobName')).to.be.rejectedWith('Missing parameter: buildNumber'));
+        it('should throw an error if the buildNumber parameter is not provided', () => expect(smithers.getSpecificBuild('jobName')).to.be.rejectedWith(
+            'Missing parameter: buildNumber'
+        ));
     });
 
     describe('getConfigXML', () => {
