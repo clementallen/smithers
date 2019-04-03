@@ -1,7 +1,6 @@
 export default (asyncClass) => {
     const newClass = asyncClass;
-    Object
-        .getOwnPropertyNames(asyncClass.prototype)
+    Object.getOwnPropertyNames(asyncClass.prototype)
         .filter(name => name !== 'constructor')
         .forEach((name) => {
             const method = newClass.prototype[name];
