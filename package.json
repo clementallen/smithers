@@ -43,7 +43,7 @@
         "eslint-plugin-jsx-a11y": "^6.2.1",
         "eslint-plugin-react": "^7.12.4",
         "mocha": "^6.1.3",
-        "np": "^4.0.2",
+        "np": "^5.0.0",
         "nyc": "^14.0.0",
         "proxyquire": "^2.1.0",
         "sinon": "^7.3.1",
