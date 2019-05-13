@@ -63,7 +63,7 @@ describe('Smithers', () => {
             expect(callerGetStub).to.be.calledWithExactly('/job/jobName/api/json', mockConfig);
         });
 
-        it.only('should throw an error if the name parameter is not provided', () => expect(smithers.getJobInfo()).to.be.rejectedWith('Missing parameter: name'));
+        it('should throw an error if the name parameter is not provided', () => expect(smithers.getJobInfo.bind(smithers)).to.throw('Missing parameter: name'));
     });
 
     describe('startBuild', () => {
@@ -83,7 +83,7 @@ describe('Smithers', () => {
             expect(callerPostStub).to.be.calledWithExactly('/job/jobName/build', mockConfig);
         });
 
-        it('should throw an error if the name parameter is not provided', () => expect(smithers.startBuild()).to.be.rejectedWith('Missing parameter: name'));
+        it('should throw an error if the name parameter is not provided', () => expect(smithers.startBuild.bind(smithers)).to.throw('Missing parameter: name'));
     });
 
     describe('stopBuild', () => {
@@ -109,9 +109,9 @@ describe('Smithers', () => {
             expect(callerPostStub).to.be.calledWithExactly('/job/jobName/100/stop', mockConfig);
         });
 
-        it('should throw an error if the name parameter is not provided', () => expect(smithers.stopBuild()).to.be.rejectedWith('Missing parameter: name'));
+        it('should throw an error if the name parameter is not provided', () => expect(smithers.stopBuild.bind(smithers)).to.throw('Missing parameter: name'));
 
-        it('should throw an error if the buildNumber parameter is not provided', () => expect(smithers.stopBuild('jobName')).to.be.rejectedWith(
+        it('should throw an error if the buildNumber parameter is not provided', () => expect(smithers.stopBuild.bind(smithers, 'jobName')).to.throw(
             'Missing parameter: buildNumber'
         ));
     });
@@ -136,7 +136,7 @@ describe('Smithers', () => {
             );
         });
 
-        it('should throw an error if the name parameter is not provided', () => expect(smithers.getLastBuild()).to.be.rejectedWith('Missing parameter: name'));
+        it('should throw an error if the name parameter is not provided', () => expect(smithers.getLastBuild.bind(smithers)).to.throw('Missing parameter: name'));
     });
 
     describe('getLastSuccessfulBuild', () => {
@@ -163,7 +163,7 @@ describe('Smithers', () => {
             );
         });
 
-        it('should throw an error if the name parameter is not provided', () => expect(smithers.getLastSuccessfulBuild()).to.be.rejectedWith(
+        it('should throw an error if the name parameter is not provided', () => expect(smithers.getLastSuccessfulBuild.bind(smithers)).to.throw(
             'Missing parameter: name'
         ));
     });
@@ -190,7 +190,7 @@ describe('Smithers', () => {
             );
         });
 
-        it('should throw an error if the name parameter is not provided', () => expect(smithers.getLastStableBuild()).to.be.rejectedWith('Missing parameter: name'));
+        it('should throw an error if the name parameter is not provided', () => expect(smithers.getLastStableBuild.bind(smithers)).to.throw('Missing parameter: name'));
     });
 
     describe('getLastUnsuccessfulBuild', () => {
@@ -217,7 +217,7 @@ describe('Smithers', () => {
             );
         });
 
-        it('should throw an error if the name parameter is not provided', () => expect(smithers.getLastUnsuccessfulBuild()).to.be.rejectedWith(
+        it('should throw an error if the name parameter is not provided', () => expect(smithers.getLastUnsuccessfulBuild.bind(smithers)).to.throw(
             'Missing parameter: name'
         ));
     });
@@ -244,7 +244,7 @@ describe('Smithers', () => {
             );
         });
 
-        it('should throw an error if the name parameter is not provided', () => expect(smithers.getLastFailedBuild()).to.be.rejectedWith('Missing parameter: name'));
+        it('should throw an error if the name parameter is not provided', () => expect(smithers.getLastFailedBuild.bind(smithers)).to.throw('Missing parameter: name'));
     });
 
     describe('getSpecificBuild', () => {
@@ -270,9 +270,9 @@ describe('Smithers', () => {
             expect(callerGetStub).to.be.calledWithExactly('/job/jobName/100/api/json', mockConfig);
         });
 
-        it('should throw an error if the name parameter is not provided', () => expect(smithers.getSpecificBuild()).to.be.rejectedWith('Missing parameter: name'));
+        it('should throw an error if the name parameter is not provided', () => expect(smithers.getSpecificBuild.bind(smithers)).to.throw('Missing parameter: name'));
 
-        it('should throw an error if the buildNumber parameter is not provided', () => expect(smithers.getSpecificBuild('jobName')).to.be.rejectedWith(
+        it('should throw an error if the buildNumber parameter is not provided', () => expect(smithers.getSpecificBuild.bind(smithers, 'jobName')).to.throw(
             'Missing parameter: buildNumber'
         ));
     });
@@ -294,7 +294,7 @@ describe('Smithers', () => {
             expect(callerGetStub).to.be.calledWithExactly('/job/jobName/config.xml', mockConfig);
         });
 
-        it('should throw an error if the name parameter is not provided', () => expect(smithers.getConfigXML()).to.be.rejectedWith('Missing parameter: name'));
+        it('should throw an error if the name parameter is not provided', () => expect(smithers.getConfigXML.bind(smithers)).to.throw('Missing parameter: name'));
     });
 
     describe('getOverallLoad', () => {
