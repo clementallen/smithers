@@ -2,6 +2,7 @@ import proxyquire from 'proxyquire';
 
 describe('Caller', () => {
     const axiosStub = sinon.stub();
+    const crumbIssuerStub = sinon.stub();
     const mockPath = '/test/path';
     const mockUrl = 'http://example.com';
     const mockResponse = {
@@ -19,13 +20,15 @@ describe('Caller', () => {
     };
 
     const Caller = proxyquire('../../src/Caller', {
-        axios: axiosStub
+        axios: axiosStub,
+        './utils/crumbIssuer': crumbIssuerStub
     });
 
     const caller = new Caller(mockUrl);
 
     afterEach(() => {
         axiosStub.reset();
+        crumbIssuerStub.reset();
     });
 
     describe('get', () => {
@@ -151,6 +154,48 @@ describe('Caller', () => {
                 },
                 maxRedirects: 3
             });
+        });
+    });
+
+    describe('crumb issuer', () => {
+        it('should wait for the crumb issue request and set headers accordingly', async () => {
+            const newCaller = new Caller(mockUrl, {
+                crumbIssuer: true
+            });
+            crumbIssuerStub.resolves({
+                crumbRequestField: 'crumbRequestField',
+                crumb: 'crumb'
+            });
+            axiosStub.resolves({
+                data: {}
+            });
+            await newCaller.post(mockPath);
+            expect(axiosStub).to.be.calledWithExactly({
+                baseURL: mockUrl,
+                method: 'POST',
+                url: 'http://example.com/test/path',
+                timeout: 5000,
+                crumbIssuer: true,
+                headers: {
+                    crumbRequestField: 'crumb'
+                }
+            });
+        });
+
+        it('should only call the crumbissuer once when multiple requests are made', () => {
+            const newCaller = new Caller(mockUrl, {
+                crumbIssuer: true
+            });
+            crumbIssuerStub.resolves({
+                crumbRequestField: 'crumbRequestField',
+                crumb: 'crumb'
+            });
+            axiosStub.resolves({
+                data: {}
+            });
+            newCaller.post(mockPath);
+            newCaller.post(mockPath);
+            expect(crumbIssuerStub).to.be.calledOnce;
         });
     });
 });

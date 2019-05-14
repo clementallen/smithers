@@ -1,9 +1,12 @@
 import axios from 'axios';
 import formatError from './utils/formatError';
+import crumbIssuer from './utils/crumbIssuer';
 
 export default class Caller {
     constructor(url, config = {}) {
         this.url = url;
+        this.crumb = null;
+        this.crumbPending = null;
         this.config = {
             ...config,
             timeout: config.timeout || 5000,
@@ -20,6 +23,20 @@ export default class Caller {
     }
 
     async call(method, path, config) {
+        if (this.crumbPending) await this.crumbPending;
+        if (this.config.crumbIssuer && !this.crumb) {
+            try {
+                this.crumbPending = new Promise(async (resolve) => {
+                    this.crumb = await crumbIssuer(this.url, this.config);
+                    this.config.headers = this.config.headers || {};
+                    this.config.headers[this.crumb.crumbRequestField] = this.crumb.crumb;
+                    resolve();
+                });
+                await this.crumbPending;
+            } catch (e) {
+                throw e;
+            }
+        }
         const url = `${this.config.baseURL}${path}`;
         const requestConfig = {
             ...this.config,
