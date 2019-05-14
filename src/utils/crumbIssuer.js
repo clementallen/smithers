@@ -2,12 +2,14 @@ import axios from 'axios';
 import paths from './paths';
 import formatError from './formatError';
 
-export default async (url, config) => {
+export default (url, config) => new Promise((resolve, reject) => {
     const requestUrl = `${url}${paths.crumbIssuer}`;
-    try {
-        const { data } = await axios.get(requestUrl, config);
-        return data;
-    } catch (error) {
-        throw formatError(error);
-    }
-};
+    axios
+        .get(requestUrl, config)
+        .then(({ data }) => {
+            resolve(data);
+        })
+        .catch((error) => {
+            reject(formatError(error));
+        });
+});

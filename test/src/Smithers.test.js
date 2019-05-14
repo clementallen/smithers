@@ -28,6 +28,13 @@ describe('Smithers', () => {
         sandbox.restore();
     });
 
+    describe('constructor', () => {
+        it('should set config if provided', () => {
+            const instance = new Smithers(mockUrl, mockConfig);
+            expect(instance.config).to.equal(mockConfig);
+        });
+    });
+
     describe('getInfo', () => {
         it('should resolve with Caller response', () => {
             callerGetStub.resolves(mockResponse);
