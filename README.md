@@ -255,3 +255,14 @@ Retrieves user details
 ```javascript
 await smithers.getWhoAmI([config]);
 ```
+
+#### getUser()
+
+-   **user** `String` **required**
+-   **config** `Object` optional
+
+Retrieves all data about a specific user
+
+```javascript
+await smithers.getUser(user, [config]);
+```

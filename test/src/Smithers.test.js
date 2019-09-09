@@ -453,4 +453,24 @@ describe('Smithers', () => {
             expect(callerGetStub).to.be.calledWithExactly('/whoAmI/api/json', mockConfig);
         });
     });
+
+    describe('getUser', () => {
+        it('should resolve with Caller response', () => {
+            callerGetStub.resolves(mockResponse);
+            return expect(smithers.getUser('username')).to.eventually.eql(mockResponse);
+        });
+
+        it('should reject with Caller error', () => {
+            callerGetStub.rejects(mockError);
+            return expect(smithers.getUser('username')).to.be.rejectedWith(mockError.message);
+        });
+
+        it('should call Caller.get with the expected parameters', async () => {
+            callerGetStub.resolves(mockResponse);
+            await smithers.getUser('username', mockConfig);
+            expect(callerGetStub).to.be.calledWithExactly('/user/username/api/json', mockConfig);
+        });
+
+        it('should throw an error if the user parameter is not provided', () => expect(smithers.getUser.bind(smithers)).to.throw('Missing parameter: user'));
+    });
 });

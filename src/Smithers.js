@@ -100,6 +100,11 @@ class Smithers {
     getWhoAmI(config) {
         return this.caller.get(paths.getWhoAmI, config);
     }
+
+    getUser(user = throwIfMissing('user'), config) {
+        const requestUrl = createPath(paths.getUser, { user });
+        return this.caller.get(requestUrl, config);
+    }
 }
 
 export default Smithers;
