@@ -25,17 +25,14 @@ export default class Caller {
     async call(method, path, config) {
         if (this.crumbPending) await this.crumbPending;
         if (this.config.crumbIssuer && !this.crumb) {
-            try {
-                this.crumbPending = new Promise(async (resolve) => {
-                    this.crumb = await crumbIssuer(this.url, this.config);
-                    this.config.headers = this.config.headers || {};
-                    this.config.headers[this.crumb.crumbRequestField] = this.crumb.crumb;
-                    resolve();
-                });
-                await this.crumbPending;
-            } catch (e) {
-                throw e;
-            }
+            // eslint-disable-next-line no-async-promise-executor
+            this.crumbPending = new Promise(async (resolve) => {
+                this.crumb = await crumbIssuer(this.url, this.config);
+                this.config.headers = this.config.headers || {};
+                this.config.headers[this.crumb.crumbRequestField] = this.crumb.crumb;
+                resolve();
+            });
+            await this.crumbPending;
         }
         const url = `${this.config.baseURL}${path}`;
         const requestConfig = {
