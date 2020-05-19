@@ -7,7 +7,6 @@ Async Jenkins API client for browsers and node
 [![Coverage Status](https://coveralls.io/repos/github/clementallen/smithers/badge.svg?branch=master)](https://coveralls.io/github/clementallen/smithers?branch=master)
 [![dependencies Status](https://david-dm.org/clementallen/smithers/status.svg)](https://david-dm.org/clementallen/smithers)
 [![devDependencies Status](https://david-dm.org/clementallen/smithers/dev-status.svg)](https://david-dm.org/clementallen/smithers?type=dev)
-[![Greenkeeper badge](https://badges.greenkeeper.io/clementallen/smithers.svg)](https://greenkeeper.io/)
 
 ### **Note:** This package is under active development and while the version is less than 1.x.x all releases should be treated as containing breaking changes.
 
