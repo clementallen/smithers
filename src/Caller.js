@@ -10,7 +10,7 @@ export default class Caller {
         this.config = {
             ...config,
             timeout: config.timeout || 5000,
-            baseURL: this.url
+            baseURL: this.url,
         };
     }
 
@@ -29,7 +29,9 @@ export default class Caller {
             this.crumbPending = new Promise(async (resolve) => {
                 this.crumb = await crumbIssuer(this.url, this.config);
                 this.config.headers = this.config.headers || {};
-                this.config.headers[this.crumb.crumbRequestField] = this.crumb.crumb;
+                this.config.headers[
+                    this.crumb.crumbRequestField
+                ] = this.crumb.crumb;
                 resolve();
             });
             await this.crumbPending;
@@ -39,7 +41,7 @@ export default class Caller {
             ...this.config,
             ...config,
             method,
-            url
+            url,
         };
 
         try {

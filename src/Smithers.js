@@ -24,7 +24,11 @@ class Smithers {
         return this.caller.post(requestUrl, config);
     }
 
-    stopBuild(name = throwIfMissing('name'), buildNumber = throwIfMissing('buildNumber'), config) {
+    stopBuild(
+        name = throwIfMissing('name'),
+        buildNumber = throwIfMissing('buildNumber'),
+        config,
+    ) {
         const requestUrl = createPath(paths.stopBuild, { name, buildNumber });
         return this.caller.post(requestUrl, config);
     }
@@ -57,9 +61,12 @@ class Smithers {
     getSpecificBuild(
         name = throwIfMissing('name'),
         buildNumber = throwIfMissing('buildNumber'),
-        config
+        config,
     ) {
-        const requestUrl = createPath(paths.getSpecificBuild, { name, buildNumber });
+        const requestUrl = createPath(paths.getSpecificBuild, {
+            name,
+            buildNumber,
+        });
         return this.caller.get(requestUrl, config);
     }
 
