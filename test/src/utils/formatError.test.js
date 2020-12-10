@@ -6,8 +6,8 @@ describe('formatError', () => {
         const actual = formatError({
             response: {
                 status: 500,
-                statusText: 'StatusCodeError'
-            }
+                statusText: 'StatusCodeError',
+            },
         });
 
         expect(actual.message).to.equal('500 | StatusCodeError');

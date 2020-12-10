@@ -19,5 +19,5 @@ export default {
     stopQuietDown: '/cancelQuietDown',
     getWhoAmI: '/whoAmI/api/json',
     getUser: '/user/{user}/api/json',
-    crumbIssuer: '/crumbIssuer/api/json'
+    crumbIssuer: '/crumbIssuer/api/json',
 };
