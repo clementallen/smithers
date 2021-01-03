@@ -1,6 +1,6 @@
 {
     "name": "smithers",
-    "version": "0.5.3",
+    "version": "0.5.4",
     "description": "Async Jenkins API client",
     "main": "./lib/index.js",
     "scripts": {
