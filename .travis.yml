@@ -3,7 +3,6 @@ language: node_js
 node_js:
     - stable
     - lts/*
-    - 8
 
 install:
     - npm ci
@@ -14,6 +13,3 @@ script:
 
 after_script:
     - "cat coverage/lcov.info | node_modules/coveralls/bin/coveralls.js"
-
-notifications:
-    webhooks: https://www.travisbuddy.com/

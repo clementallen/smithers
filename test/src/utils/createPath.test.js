@@ -13,7 +13,7 @@ describe('createPath', () => {
         const values = {
             type: 'info',
             param: 'value',
-            empty: 'does-not-exist'
+            empty: 'does-not-exist',
         };
         const result = createPath(mockTemplate, values);
 
