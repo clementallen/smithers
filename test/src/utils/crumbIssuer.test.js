@@ -23,10 +23,7 @@ describe('crumbIssuer', () => {
         });
         await crumbIssuer(mockUrl, mockConfig);
 
-        expect(axiosGetStub).to.have.been.calledWith(
-            'http://example.com/crumbIssuer/api/json',
-            mockConfig,
-        );
+        expect(axiosGetStub).to.have.been.calledWith('http://example.com/crumbIssuer/api/json', mockConfig);
     });
 
     it('should throw the expected error', () => {
@@ -37,8 +34,6 @@ describe('crumbIssuer', () => {
             },
         });
 
-        return expect(
-            crumbIssuer(mockUrl, mockConfig),
-        ).to.eventually.be.rejectedWith('500 | Internal Error');
+        return expect(crumbIssuer(mockUrl, mockConfig)).to.eventually.be.rejectedWith('500 | Internal Error');
     });
 });
