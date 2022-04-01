@@ -35,9 +35,7 @@ describe('Caller', () => {
         it('should resolve with the correct data', () => {
             axiosStub.resolves(mockResponse);
 
-            return expect(caller.get(mockPath)).to.eventually.eql(
-                mockResponse.data,
-            );
+            return expect(caller.get(mockPath)).to.eventually.eql(mockResponse.data);
         });
 
         it('should resolve with a standard message if response.data is empty', () => {
@@ -45,18 +43,14 @@ describe('Caller', () => {
                 data: '',
             });
 
-            return expect(caller.get(mockPath)).to.eventually.eql(
-                'Request successful',
-            );
+            return expect(caller.get(mockPath)).to.eventually.eql('Request successful');
         });
 
         it('should reject if response errors', () => {
             const mockError = new Error('Caller Unavailable');
             axiosStub.rejects(mockError);
 
-            return expect(caller.get(mockPath)).to.be.rejectedWith(
-                'Caller Unavailable',
-            );
+            return expect(caller.get(mockPath)).to.be.rejectedWith('Caller Unavailable');
         });
 
         it('should call axios with the instance config if no separate config provided', async () => {
@@ -104,9 +98,7 @@ describe('Caller', () => {
         it('should resolve with the correct data', () => {
             axiosStub.resolves(mockResponse);
 
-            return expect(caller.post(mockPath)).to.eventually.eql(
-                mockResponse.data,
-            );
+            return expect(caller.post(mockPath)).to.eventually.eql(mockResponse.data);
         });
 
         it('should resolve with a standard message if response.data is empty', () => {
@@ -114,18 +106,14 @@ describe('Caller', () => {
                 data: '',
             });
 
-            return expect(caller.get(mockPath)).to.eventually.eql(
-                'Request successful',
-            );
+            return expect(caller.get(mockPath)).to.eventually.eql('Request successful');
         });
 
         it('should reject if response errors', () => {
             const mockError = new Error('Caller Unavailable');
             axiosStub.rejects(mockError);
 
-            return expect(caller.post(mockPath)).to.be.rejectedWith(
-                'Caller Unavailable',
-            );
+            return expect(caller.post(mockPath)).to.be.rejectedWith('Caller Unavailable');
         });
 
         it('should call axios with the instance config if no separate config provided', async () => {
