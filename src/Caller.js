@@ -29,9 +29,7 @@ export default class Caller {
             this.crumbPending = new Promise(async (resolve) => {
                 this.crumb = await crumbIssuer(this.url, this.config);
                 this.config.headers = this.config.headers || {};
-                this.config.headers[
-                    this.crumb.crumbRequestField
-                ] = this.crumb.crumb;
+                this.config.headers[this.crumb.crumbRequestField] = this.crumb.crumb;
                 resolve();
             });
             await this.crumbPending;
